@@ -27,7 +27,8 @@ jobs:
       
       - name: Get dependencies
         run: flutter pub get
-
+      - name: Enable support web
+        run: flutter config --enable-web
       - name: Start Web Release Build
         run: flutter build web --base-href "/whaleopop.github.io/LoveApp/" --release
      
