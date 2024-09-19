@@ -6,4 +6,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./app:/app
+      - .:/app
+      - ./database:/app/database
+    environment:
+      - DATABASE_URL=sqlite:///./database/database.db
