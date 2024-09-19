@@ -1,4 +1,4 @@
-name: Build and Run Docker
+name: Build and Run Docker-Compose
 
 on:
   push:
@@ -17,13 +17,16 @@ jobs:
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
 
-      - name: Build Docker image
-        run: docker build -t loveapp-db .
+      - name: Set up Docker Compose
+        run: sudo apt-get update && sudo apt-get install -y docker-compose
 
-      - name: Run Docker container
-        run: docker run -d -p 8000:8000 loveapp-db
+      - name: Build services
+        run: docker-compose build
+
+      - name: Start services
+        run: docker-compose up -d
 
       - name: Wait for the app to start
         run: |
           sleep 10
-          curl http://localhost:8000
+          curl https://whaleopop.github.io/LoveApp/
