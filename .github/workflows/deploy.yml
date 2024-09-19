@@ -5,9 +5,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
   
 on:
-  push:
-    branches:
-      'docker-db'
+  workflow_dispatch
 
 jobs:
   deploy:
