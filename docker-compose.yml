@@ -5,8 +5,6 @@ services:
     build: .
     image: web-app
     restart: unless-stopped
-    ports:
-      - "8000:8000"
     volumes:
       - .:/app
       - ./database:/app/database
@@ -15,7 +13,7 @@ services:
     deploy:
       replicas: 3
     expose:
-      - "8000"
+      - "5000"
 
   nginx-balancer:
     image: nginx
@@ -26,7 +24,7 @@ services:
     depends_on:
       - web
     ports:
-      - "8080:80"
+      - "5000:4000"
 
   nginx-html:
     image: nginx
@@ -37,4 +35,4 @@ services:
     depends_on:
       - nginx-balancer
     ports:
-      - "8081:80"
+      - "8080:80"
