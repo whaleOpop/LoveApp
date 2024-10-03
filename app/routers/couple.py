@@ -16,4 +16,8 @@ def read_couple(couple_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Couple not found")
     return db_couple
 
+@router.delete("/{couple_id}")
+def delete_couple_endpoint(couple_id: int, db: Session = Depends(get_db)):
+    crud.delete_couple(db=db, couple_id=couple_id)
+    return {detail: "Couple is sucsesefully deleted =( "}
 
