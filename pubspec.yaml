@@ -7,6 +7,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  status_bar_control: ^3.2.1
   flutterflow_ui: ^0.3.1
   auto_size_text: 3.0.0
   cached_network_image: 3.3.1
