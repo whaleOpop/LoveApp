@@ -21,9 +21,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
-
-
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   }
 
   @override
