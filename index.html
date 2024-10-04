@@ -31,6 +31,37 @@
 
   <title>loveapp</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- Добавьте эти метатеги и скрипт для полного расширения экрана -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, height=device-height">
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const viewportMeta = document.querySelector('meta[name="viewport"]');
+      if (viewportMeta) {
+        viewportMeta.content += ', height=device-height';
+      } else {
+        document.head.insertAdjacentHTML(
+          'afterbegin',
+          '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, height=device-height">'
+        );
+      }
+    });
+    
+    // Если вы используете Flutter Web
+    const serviceWorkerVersion = "2741644872";
+    const scriptLoaded = serviceWorkerVersion !== null;
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        const scriptingEnabled = await navigator.serviceWorker.getRegistration('/flutter_service_worker.js');
+        if (!scriptLoaded && scriptingEnabled.scriptURL.endsWith(serviceWorkerVersion)) {
+          await navigator.serviceWorkder.register(scriptingEnabled);
+          let worker = await navigator.serviceWorker.ready;
+          await worker.active.postMessage({type: 'SKIP_WAITING'});
+        }
+      });
+    }
+  </script>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>
