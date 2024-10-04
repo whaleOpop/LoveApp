@@ -35,7 +35,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      // onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: CustomTheme.lightTheme.scaffoldBackgroundColor,
@@ -49,7 +49,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               fit: BoxFit.cover,
             ),
             Padding(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
+              padding:
+                  EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -58,7 +59,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     style: CustomTheme.lightTheme.textTheme.bodyMedium,
                   ),
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(70, 0, 70, 86),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(70, 0, 70, 86),
                     child: Text(
                       'Больше, чем просто пара — это ваши общие воспоминания',
                       textAlign: TextAlign.center,
@@ -87,7 +89,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       child: Align(
                         alignment: const AlignmentDirectional(0, 0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
                           child: FFButtonWidget(
                             onPressed: () {
                               print('Button pressed ...');
@@ -96,10 +99,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: double.infinity,
-                              padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  16, 0, 16, 0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 0, 0, 0),
                               color: Colors.transparent,
-                              textStyle: CustomTheme.lightTheme.textTheme.titleSmall,
+                              textStyle:
+                                  CustomTheme.lightTheme.textTheme.titleSmall,
                               elevation: 0,
                               borderRadius: BorderRadius.circular(15),
                             ),
@@ -123,8 +129,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: double.infinity,
-                        padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                        iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                         color: const Color.fromARGB(0, 255, 255, 255),
                         textStyle: const TextStyle(
                           fontFamily: 'Miratrix',
@@ -137,6 +145,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 105,
+                  )
                 ],
               ),
             ),
