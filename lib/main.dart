@@ -6,7 +6,7 @@ import 'package:status_bar_control/status_bar_control.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  StatusBarControl.setHidden(true, animation:StatusBarAnimation.SLIDE);
+  
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
       overlays: [SystemUiOverlay.bottom]);
   runApp(const MyApp());
