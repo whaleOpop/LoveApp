@@ -22,9 +22,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
-      SystemUiOverlay.bottom,
-    ]);
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+    );
+    
     StatusBarControl.setHidden(true);
   }
 
@@ -41,7 +42,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
-         
           key: scaffoldKey,
           backgroundColor: CustomTheme
               .lightTheme.scaffoldBackgroundColor, // Используем CustomTheme
