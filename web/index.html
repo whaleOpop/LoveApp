@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -22,7 +22,7 @@
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="loveapp">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
@@ -32,38 +32,51 @@
   <title>loveapp</title>
   <link rel="manifest" href="manifest.json">
 
-  <!-- Добавьте эти метатеги и скрипт для полного расширения экрана -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, height=device-height">
-  
+  <!-- Полноэкранный режим для мобильных устройств -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    #viewport {
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
+  </style>
+
   <script>
+    // Функция для запуска приложения в полном экранном режиме
+    function launchFullscreen() {
+      const element = document.getElementById('viewport');
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+    }
+
+    // Запуск функции после загрузки документа
     document.addEventListener('DOMContentLoaded', () => {
-      const viewportMeta = document.querySelector('meta[name="viewport"]');
-      if (viewportMeta) {
-        viewportMeta.content += ', height=device-height';
-      } else {
-        document.head.insertAdjacentHTML(
-          'afterbegin',
-          '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, height=device-height">'
-        );
+      launchFullscreen();
+
+      // Проверка поддержки Fullscreen API
+      if (!document.fullscreenElement && !((document.documentElement || document.body).requestFullscreen) &&
+          !((document.documentElement || document.body).mozRequestFullScreen) &&
+          !((document.documentElement || document.body).webkitRequestFullScreen)) {
+        alert("Full Screen API не поддерживается вашим браузером.");
       }
     });
-    
-    // Если вы используете Flutter Web
-    const serviceWorkerVersion = null;
-    const scriptLoaded = serviceWorkerVersion !== null;
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        const scriptingEnabled = await navigator.serviceWorker.getRegistration('/flutter_service_worker.js');
-        if (!scriptLoaded && scriptingEnabled.scriptURL.endsWith(serviceWorkerVersion)) {
-          await navigator.serviceWorkder.register(scriptingEnabled);
-          let worker = await navigator.serviceWorker.ready;
-          await worker.active.postMessage({type: 'SKIP_WAITING'});
-        }
-      });
-    }
   </script>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <div id="viewport">
+    <script src="flutter_bootstrap.js"></script>
+  </div>
 </body>
 </html>
