@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:loveapp/pages/home_page/home_page_widget.dart';
 import 'theme/custom_theme.dart';
 import 'package:flutter/services.dart';
-import 'package:status_bar_control/status_bar_control.dart';
+
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
