@@ -1,10 +1,10 @@
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:loveapp/theme/custom_theme.dart';
-import 'package:flutter/services.dart'; // Для работы с SystemChrome
+
 import 'home_page_model.dart';
 export 'home_page_model.dart';
-import 'package:status_bar_control/status_bar_control.dart';
+
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({super.key});
@@ -22,9 +22,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: [SystemUiOverlay.bottom]);
-    StatusBarControl.setHidden(true);
   }
 
   @override
