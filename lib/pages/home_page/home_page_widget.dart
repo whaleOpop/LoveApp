@@ -39,7 +39,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
-          appBar: AppBar(),
+         
           key: scaffoldKey,
           backgroundColor: CustomTheme
               .lightTheme.scaffoldBackgroundColor, // Используем CustomTheme
