@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomTheme {
   static ThemeData lightTheme = ThemeData(
-    primaryColor: Colors.white,
+    primaryColor: Colors.black,
     scaffoldBackgroundColor: Colors.black, 
     textTheme: const TextTheme(
       bodyMedium: TextStyle(
