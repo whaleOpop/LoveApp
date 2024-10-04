@@ -19,4 +19,4 @@ def read_photo(photo_id: int, db: Session = Depends(get_db)):
 @router.delete("/{photo_id}")
 def delete_photo_endpoint(photo_id: int, db: Session = Depends(get_db)):
     crud.delete_photo(db=db, photo_id=photo_id)
-    return {detail: "Photo is sucsesefully deleted"}
+    return {"detail": "Photo is sucsesefully deleted"}

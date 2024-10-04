@@ -42,7 +42,7 @@ def get_photo(db: Session, photo_id: int):
 def delete_photo(db: Session, photo_id: int):
     db_photo = db.query(Photo).filter(Photo.id == photo_id).first()
 
-    if db.photo is None:
+    if db_photo is None:
         raise HTTPException(status=404, details="Photo is not found")
 
     db.delete(db_photo)
@@ -65,10 +65,10 @@ def get_gallery(db: Session, gallery_id: int):
 def delete_gallery(db: Session, gallery_id: int):
     db_gallery = db.query(Gallery).filter(Gallery.id == gallery_id).first()
 
-    if db.photo is None:
+    if db_gallery is None:
         raise HTTPException(status=404, details="Gallery is not found")
 
-    db.delte(db_gallery)
+    db.delete(db_gallery)
     db.commit()
     return {"details": "Gallery succsesfully deleted"}
 
@@ -88,9 +88,9 @@ def get_couple(db: Session, couple_id: int):
 def delete_couple(db: Session, couple_id: int):
     db_couple = db.query(Couple).filter(Couple.id == couple_id).first()
 
-    if db.couple is None:
+    if db_couple is None:
         raise HTTPException(status=404, details="Couple is not found")
 
-    db.delte(db_couple)
+    db.delete(db_couple)
     db.commit()
     return {"details": "Couple succsesfully deleted"}
