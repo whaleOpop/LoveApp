@@ -22,7 +22,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
-
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom]);
     StatusBarControl.setHidden(true);
   }
 
@@ -42,7 +43,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         extendBodyBehindAppBar: true,
         body: Stack(
           children: [
-            
             Image.asset(
               'assets/images/iPhone_14_&_15_Pro_-_29.jpg',
               width: double.infinity,
