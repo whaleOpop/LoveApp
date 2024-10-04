@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Love App',
       theme: CustomTheme.lightTheme,
-      home: const HomePageWidget(),
+      home: const SafeArea(child: HomePageWidget()),
       debugShowCheckedModeBanner: false,
     );
   }
