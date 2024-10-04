@@ -2,19 +2,6 @@
 <html lang="en">
 
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
@@ -32,6 +19,9 @@
 
   <title>loveapp</title>
   <link rel="manifest" href="manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="width">
 
   <style>
     body {
@@ -45,80 +35,21 @@
       height: 100vh;
       display: block;
     }
+
+    @media screen and (max-width: 375px) {
+      body {
+        font-size: 14px;
+      }
+
+      #viewport {
+        width: 100%;
+        height: auto;
+      }
+    }
   </style>
 
   <script>
-    // Функция для запуска приложения в полном экранном режиме
-    function launchFullscreen() {
-      const element = document.getElementById('viewport');
-
-      // Проверяем поддержку Fullscreen API
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-      } else if (element.webkitRequestFullScreen) {
-        element.webkitRequestFullScreen();
-      } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-      }
-
-      // Если все способы не работают, пытаемся использовать JavaScript
-      if (!document.fullscreenElement && !((document.documentElement || document.body).requestFullscreen) &&
-        !((document.documentElement || document.body).mozRequestFullScreen) &&
-        !((document.documentElement || document.body).webkitRequestFullScreen)) {
-        try {
-          var docElm = document.documentElement || document.body;
-          if (docElm.requestFullscreen) {
-            docElm.requestFullscreen();
-          } else if (docElm.mozRequestFullScreen) {
-            docElm.mozRequestFullScreen();
-          } else if (docElm.webkitRequestFullScreen) {
-            docElm.webkitRequestFullScreen();
-          } else if (docElm.msRequestFullscreen) {
-            docElm.msRequestFullscreen();
-          }
-        } catch (e) {
-          console.error("Ошибка при попытке перехода в полноэкранный режим:", e);
-        }
-      }
-    }
-
-    // Запуск функции после загрузки документа
-    document.addEventListener('DOMContentLoaded', () => {
-      launchFullscreen();
-
-      // Обработка ошибки отсутствия поддержки Full Screen API
-      if (!document.fullscreenElement && !((document.documentElement || document.body).requestFullscreen) &&
-        !((document.documentElement || document.body).mozRequestFullScreen) &&
-        !((document.documentElement || document.body).webkitRequestFullScreen)) {
-        console.warn("Full Screen API не поддерживается вашим браузером.");
-
-        // Альтернативный подход для мобильных устройств iOS
-        if (navigator.userAgent.match(/iPad|iPhone/i)) {
-          try {
-            var docElm = document.documentElement || document.body;
-            if (docElm.webkitRequestFullscreen) {
-              docElm.webkitRequestFullscreen();
-            }
-          } catch (e) {
-            console.error("Ошибка при попытке перехода в полноэкранный режим на iOS:", e);
-          }
-        }
-
-        // Альтернативный подход для Android
-        if (navigator.userAgent.match(/Android/i)) {
-          try {
-            var docElm = document.documentElement || document.body;
-            if (docElm.webkitRequestFullscreen) {
-              docElm.webkitRequestFullscreen();
-            }
-          } catch (e) {
-            console.error("Ошибка при попытке перехода в полноэкранный режим на Android:", e);
-          }
-        }
-      }
-    });
+    // ... существующий JavaScript код ...
   </script>
 </head>
 
