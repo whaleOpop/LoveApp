@@ -1,9 +1,10 @@
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:loveapp/theme/custom_theme.dart';
-
+import 'package:flutter/services.dart'; // Для работы с SystemChrome
 import 'home_page_model.dart';
 export 'home_page_model.dart';
+import 'package:status_bar_control/status_bar_control.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({super.key});
@@ -21,6 +22,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
+
+    StatusBarControl.setHidden(true);
   }
 
   @override
@@ -46,8 +49,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               fit: BoxFit.cover,
             ),
             Padding(
-              padding:
-                  EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
+              padding: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -56,8 +58,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     style: CustomTheme.lightTheme.textTheme.bodyMedium,
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(70, 0, 70, 86),
+                    padding: const EdgeInsetsDirectional.fromSTEB(70, 0, 70, 86),
                     child: Text(
                       'Больше, чем просто пара — это ваши общие воспоминания',
                       textAlign: TextAlign.center,
@@ -86,8 +87,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       child: Align(
                         alignment: const AlignmentDirectional(0, 0),
                         child: Padding(
-                          padding:
-                              const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                          padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
                           child: FFButtonWidget(
                             onPressed: () {
                               print('Button pressed ...');
@@ -96,13 +96,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: double.infinity,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16, 0, 16, 0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0, 0, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                               color: Colors.transparent,
-                              textStyle:
-                                  CustomTheme.lightTheme.textTheme.titleSmall,
+                              textStyle: CustomTheme.lightTheme.textTheme.titleSmall,
                               elevation: 0,
                               borderRadius: BorderRadius.circular(15),
                             ),
@@ -126,10 +123,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: double.infinity,
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                        iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                        iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                         color: const Color.fromARGB(0, 255, 255, 255),
                         textStyle: const TextStyle(
                           fontFamily: 'Miratrix',
