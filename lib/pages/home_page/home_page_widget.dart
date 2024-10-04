@@ -21,7 +21,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
-     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
+      SystemUiOverlay.bottom,
+    ]);
   }
 
   @override
@@ -37,6 +39,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       child: WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
+          appBar: AppBar(),
           key: scaffoldKey,
           backgroundColor: CustomTheme
               .lightTheme.scaffoldBackgroundColor, // Используем CustomTheme
@@ -59,25 +62,30 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   Align(
                     alignment: const AlignmentDirectional(0, 0),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 100),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 100),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
                             'Be loved',
-                            style: CustomTheme.lightTheme.textTheme.bodyMedium, // Применяем кастомную тему для текста
+                            style: CustomTheme.lightTheme.textTheme
+                                .bodyMedium, // Применяем кастомную тему для текста
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(70, 0, 70, 86),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                70, 0, 70, 86),
                             child: Text(
                               'Больше, чем просто пара — это ваши общие воспоминания',
                               textAlign: TextAlign.center,
-                              style: CustomTheme.lightTheme.textTheme.bodySmall, // Применяем кастомную тему
+                              style: CustomTheme.lightTheme.textTheme
+                                  .bodySmall, // Применяем кастомную тему
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 14),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 0, 0, 14),
                             child: Container(
                               width: 355,
                               height: 54,
@@ -98,7 +106,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               child: Align(
                                 alignment: const AlignmentDirectional(0, 0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 1),
                                   child: FFButtonWidget(
                                     onPressed: () {
                                       print('Button pressed ...');
@@ -107,10 +116,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     options: FFButtonOptions(
                                       width: double.infinity,
                                       height: double.infinity,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                                      iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              16, 0, 16, 0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 0, 0),
                                       color: Colors.transparent,
-                                      textStyle: CustomTheme.lightTheme.textTheme.titleSmall, // Используем кастомную тему для кнопки
+                                      textStyle: CustomTheme
+                                          .lightTheme
+                                          .textTheme
+                                          .titleSmall, // Используем кастомную тему для кнопки
                                       elevation: 0,
                                       borderRadius: BorderRadius.circular(15),
                                     ),
@@ -136,8 +152,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: double.infinity,
-                                padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 0, 16, 0),
+                                iconPadding:
+                                    const EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 0),
                                 color: const Color.fromARGB(0, 255, 255, 255),
                                 textStyle: TextStyle(
                                   fontFamily: 'Miratrix',
