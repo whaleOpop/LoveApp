@@ -42,12 +42,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         extendBodyBehindAppBar: true,
         body: Stack(
           children: [
+            
             Image.asset(
               'assets/images/iPhone_14_&_15_Pro_-_29.jpg',
               width: double.infinity,
               height: double.infinity,
               fit: BoxFit.cover,
             ),
+            Text("ЗАЛУПА"),
             Padding(
               padding:
                   EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
