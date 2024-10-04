@@ -22,9 +22,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.transparent),
-    );
+
 
     StatusBarControl.setHidden(true);
   }
@@ -163,7 +161,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             0, 0, 0, 0),
                                     color:
                                         const Color.fromARGB(0, 255, 255, 255),
-                                    textStyle: TextStyle(
+                                    textStyle: const TextStyle(
                                       fontFamily: 'Miratrix',
                                       color: Colors.white,
                                       letterSpacing: 0.0,
