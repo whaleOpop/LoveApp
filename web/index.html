@@ -1,7 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- ... (оставьте остальные метатеги без изменений) -->
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="loveapp">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <title>loveapp</title>
+  <link rel="manifest" href="manifest.json">
 
   <style>
     body {
@@ -9,6 +39,7 @@
       padding: 0;
       overflow: hidden;
     }
+
     #viewport {
       width: 100vw;
       height: 100vh;
@@ -20,7 +51,7 @@
     // Функция для запуска приложения в полном экранном режиме
     function launchFullscreen() {
       const element = document.getElementById('viewport');
-      
+
       // Проверяем поддержку Fullscreen API
       if (element.requestFullscreen) {
         element.requestFullscreen();
@@ -34,8 +65,8 @@
 
       // Если все способы не работают, пытаемся использовать JavaScript
       if (!document.fullscreenElement && !((document.documentElement || document.body).requestFullscreen) &&
-          !((document.documentElement || document.body).mozRequestFullScreen) &&
-          !((document.documentElement || document.body).webkitRequestFullScreen)) {
+        !((document.documentElement || document.body).mozRequestFullScreen) &&
+        !((document.documentElement || document.body).webkitRequestFullScreen)) {
         try {
           var docElm = document.documentElement || document.body;
           if (docElm.requestFullscreen) {
@@ -47,7 +78,7 @@
           } else if (docElm.msRequestFullscreen) {
             docElm.msRequestFullscreen();
           }
-        } catch(e) {
+        } catch (e) {
           console.error("Ошибка при попытке перехода в полноэкранный режим:", e);
         }
       }
@@ -59,10 +90,10 @@
 
       // Обработка ошибки отсутствия поддержки Full Screen API
       if (!document.fullscreenElement && !((document.documentElement || document.body).requestFullscreen) &&
-          !((document.documentElement || document.body).mozRequestFullScreen) &&
-          !((document.documentElement || document.body).webkitRequestFullScreen)) {
+        !((document.documentElement || document.body).mozRequestFullScreen) &&
+        !((document.documentElement || document.body).webkitRequestFullScreen)) {
         console.warn("Full Screen API не поддерживается вашим браузером.");
-        
+
         // Альтернативный подход для мобильных устройств iOS
         if (navigator.userAgent.match(/iPad|iPhone/i)) {
           try {
@@ -70,11 +101,11 @@
             if (docElm.webkitRequestFullscreen) {
               docElm.webkitRequestFullscreen();
             }
-          } catch(e) {
+          } catch (e) {
             console.error("Ошибка при попытке перехода в полноэкранный режим на iOS:", e);
           }
         }
-        
+
         // Альтернативный подход для Android
         if (navigator.userAgent.match(/Android/i)) {
           try {
@@ -82,7 +113,7 @@
             if (docElm.webkitRequestFullscreen) {
               docElm.webkitRequestFullscreen();
             }
-          } catch(e) {
+          } catch (e) {
             console.error("Ошибка при попытке перехода в полноэкранный режим на Android:", e);
           }
         }
@@ -90,9 +121,11 @@
     });
   </script>
 </head>
+
 <body>
   <div id="viewport">
     <script src="flutter_bootstrap.js"></script>
   </div>
 </body>
+
 </html>
