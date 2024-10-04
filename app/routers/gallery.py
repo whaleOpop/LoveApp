@@ -16,3 +16,7 @@ def read_gallery(gallery_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Gallery not found")
     return db_gallery
 
+@router.delete("/{gallery_id}")
+def delete_gallery_endpoint(gallery_id: int, db: Session = Depends(get_db)):
+    crud.delete_gallery(db=db, gallery_id=gallery_id)
+    return {"detail": "Gallery is sucsesefully deleted"}
