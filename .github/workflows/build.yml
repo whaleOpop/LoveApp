@@ -6,7 +6,7 @@ on:
             - 'docker-db'
 env:
     REGISTRY: ghcr.io
-    IMAGE_NAME: ${{ github.repository }}
+    IMAGE_NAME: ${{ github.repository }}-docker-db
 
 jobs:
     build:
