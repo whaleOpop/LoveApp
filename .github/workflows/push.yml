@@ -19,5 +19,5 @@ jobs:
     - name: Build the docker-place Docker image
       run: |
         docker build . --tag ghcr.io/whaleopop/loveapp-docker-place:docker-place
-        docker run ghcr.io/whaleopop/loveapp-docker-place:docker-place
+        docker run -p 8081:8000 ghcr.io/whaleopop/loveapp-docker-place:docker-place
         docker push ghcr.io/whaleopop/loveapp-docker-place:docker-place
