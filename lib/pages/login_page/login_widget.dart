@@ -1,8 +1,9 @@
 import 'package:loveapp/theme/love_app_theme.dart';
 
+import 'package:loveapp/pages/register_page/register_widget.dart';
+
 import '/components/input_password/input_password_widget.dart';
 import '/components/input_phone/input_phone_widget.dart';
-import '/components/input_text/input_text_widget.dart';
 import '/components/primary_button/primary_button_widget.dart';
 import '/components/sub_button/sub_button_widget.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
@@ -10,19 +11,19 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-import 'register_model.dart';
-export 'register_model.dart';
+import 'login_model.dart';
+export 'login_model.dart';
 
-class RegisterWidget extends StatefulWidget {
-  const RegisterWidget({super.key});
+class LoginWidget extends StatefulWidget {
+  const LoginWidget({super.key});
 
   @override
-  State<RegisterWidget> createState() => _RegisterWidgetState();
+  State<LoginWidget> createState() => _LoginWidgetState();
 }
 
-class _RegisterWidgetState extends State<RegisterWidget>
+class _LoginWidgetState extends State<LoginWidget>
     with TickerProviderStateMixin {
-  late RegisterModel _model;
+  late LoginModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -31,7 +32,7 @@ class _RegisterWidgetState extends State<RegisterWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => RegisterModel());
+    _model = createModel(context, () => LoginModel());
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
@@ -104,7 +105,7 @@ class _RegisterWidgetState extends State<RegisterWidget>
                     ),
                     child: Container(
                       width: double.infinity,
-                      height: 535,
+                      height: 460,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(0),
@@ -139,7 +140,7 @@ class _RegisterWidgetState extends State<RegisterWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 8),
                                   child: Text(
-                                    'Приветствуем!',
+                                    'Здравствуйте!',
                                     style: LoveAppTheme.miratrixLightTheme
                                         .textTheme.bodyMedium,
                                   ),
@@ -148,32 +149,27 @@ class _RegisterWidgetState extends State<RegisterWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       70, 0, 70, 40),
                                   child: Text(
-                                      'Больше, чем просто пара — это ваши общие воспоминания',
-                                      textAlign: TextAlign.center,
-                                      style: LoveAppTheme.montserratLightTheme
-                                          .textTheme.bodyMedium),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 26),
-                                  child: wrapWithModel(
-                                    model: _model.inputTextModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: InputTextWidget(),
+                                    'Больше, чем просто пара — это ваши общие воспоминания',
+                                    textAlign: TextAlign.center,
+                                    style: LoveAppTheme.montserratLightTheme
+                                          .textTheme.bodyMedium
+                                    ),
+                                  ),
+                                Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 26),
+                                    child: wrapWithModel(
+                                      model: _model.inputPhoneModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: InputPhoneWidget(),
+                                    ),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 26),
-                                  child: wrapWithModel(
-                                    model: _model.inputPhoneModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: InputPhoneWidget(),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 0, 48),
+                                      0, 0, 0, 50),
                                   child: wrapWithModel(
                                     model: _model.inputPasswordModel,
                                     updateCallback: () => safeSetState(() {}),
@@ -187,8 +183,9 @@ class _RegisterWidgetState extends State<RegisterWidget>
                                     model: _model.primaryButtonModel,
                                     updateCallback: () => safeSetState(() {}),
                                     child: PrimaryButtonWidget(
-                                        actionText: 'Зарегистрироваться',
-                                        onPressed: () {}),
+                                      actionText: 'войти',
+                                      onPressed: () {},
+                                    ),
                                   ).animateOnPageLoad(animationsMap[
                                       'primaryButtonOnPageLoadAnimation']!),
                                 ),
@@ -196,9 +193,9 @@ class _RegisterWidgetState extends State<RegisterWidget>
                                   model: _model.subButtonModel,
                                   updateCallback: () => safeSetState(() {}),
                                   child: SubButtonWidget(
-                                    actionText: 'Уже есть аккуаунт? Войти',
+                                    actionText: 'Нет аккаунта? Зарегистрироваться',
                                     onPressed: () {
-                                      Navigator.pushNamed(context, '/login');
+                                      Navigator.pushNamed(context, '/register');
                                     },
                                   ),
                                 ),

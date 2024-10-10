@@ -61,7 +61,7 @@ class _InputPasswordWidgetState extends State<InputPasswordWidget> {
             ),
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                color: Color(0x00000000),
+                color: Colors.white,
                 width: 1,
               ),
               borderRadius: BorderRadius.circular(0),
@@ -85,7 +85,7 @@ class _InputPasswordWidgetState extends State<InputPasswordWidget> {
           style: LoveAppTheme.montserratLightTheme
                                           .textTheme.bodyMedium,
           keyboardType: TextInputType.visiblePassword,
-          cursorColor: LoveAppTheme.miratrixLightTheme.primaryColor,
+          cursorColor: Colors.white,
           validator: _model.textControllerValidator.asValidator(context),
         ),
       ),

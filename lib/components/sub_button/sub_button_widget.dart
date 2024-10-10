@@ -9,9 +9,11 @@ class SubButtonWidget extends StatefulWidget {
   const SubButtonWidget({
     super.key,
     String? actionText,
-  }) : this.actionText = actionText ?? 'Action';
+    required this.onPressed,
+  }) : actionText = actionText ?? 'Action';
 
   final String actionText;
+  final VoidCallback onPressed;
 
   @override
   State<SubButtonWidget> createState() => _SubButtonWidgetState();
@@ -44,9 +46,7 @@ class _SubButtonWidgetState extends State<SubButtonWidget> {
     return Align(
       alignment: AlignmentDirectional(0, 0),
       child: FFButtonWidget(
-        onPressed: () {
-          print('Button pressed ...');
-        },
+        onPressed: widget.onPressed,
         text: widget!.actionText,
         options: FFButtonOptions(
           height: 40,
