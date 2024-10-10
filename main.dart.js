@@ -72022,7 +72022,7 @@ A.ajd.prototype={
 $0(){A.CR("Button pressed ...")},
 $S:55}
 A.GU.prototype={
-N(a){return new A.wf(B.Bo,"Love App",$.p1(),!0,null)}}
+N(a){return new A.wf(B.Bo,"Love App",$.p1(),!1,null)}}
 A.n2.prototype={
 kN(a){this.f=A.eX(a,new A.a_Q(),t.OZ)
 this.r=A.eX(a,new A.a_R(),t.nA)},
