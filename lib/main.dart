@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loveapp/pages/home_page/home_page_widget.dart';
-import 'theme/custom_theme.dart';
+import 'theme/love_app_theme.dart';
 import 'package:flutter/services.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Love App',
         debugShowCheckedModeBanner: true,
-        theme: CustomTheme.lightTheme,
+        theme: LoveAppTheme.miratrixLightTheme,
         home: const HomePageWidget());
   }
 }
