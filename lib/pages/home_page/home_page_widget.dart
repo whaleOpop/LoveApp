@@ -1,7 +1,13 @@
+import 'package:loveapp/pages/register_page/register_widget.dart';
+
+import '/components/primary_button/primary_button_widget.dart';
+import '/components/secondary_button/secondary_button_widget.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
+
 import 'package:flutter/material.dart';
-import 'package:loveapp/theme/custom_theme.dart';
-import 'package:flutter/services.dart';
+
+import 'package:flutter_animate/flutter_animate.dart';
+import '/theme/love_app_theme.dart';
 
 import 'home_page_model.dart';
 export 'home_page_model.dart';
@@ -13,145 +19,126 @@ class HomePageWidget extends StatefulWidget {
   State<HomePageWidget> createState() => _HomePageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class _HomePageWidgetState extends State<HomePageWidget>
+    with TickerProviderStateMixin {
   late HomePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
+    animationsMap.addAll({
+      'primaryButtonOnPageLoadAnimation': AnimationInfo(
+        loop: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 2000.0.ms,
+            duration: 600.0.ms,
+            color: Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
   void dispose() {
     _model.dispose();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: CustomTheme.lightTheme.scaffoldBackgroundColor,
-        extendBodyBehindAppBar: true,
-        body: Stack(
-          children: [
-            Image.asset(
-              'assets/images/iPhone_14_&_15_Pro_-_29.jpg',
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor:
+              LoveAppTheme.miratrixLightTheme.scaffoldBackgroundColor,
+          body: Align(
+            alignment: AlignmentDirectional(0, 0),
+            child: Container(
               width: double.infinity,
               height: double.infinity,
-              fit: BoxFit.cover,
-            ),
-            Text("ЗАЛУПА"),
-            Padding(
-              padding:
-                  EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
+              child: Stack(
                 children: [
-                  Text(
-                    'Be loved',
-                    style: CustomTheme.lightTheme.textTheme.bodyMedium,
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(70, 0, 70, 86),
-                    child: Text(
-                      'Больше, чем просто пара — это ваши общие воспоминания',
-                      textAlign: TextAlign.center,
-                      style: CustomTheme.lightTheme.textTheme.bodySmall,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset(
+                      'assets/images/background.jpg',
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 14),
-                    child: Container(
-                      width: 355,
-                      height: 54,
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [
-                            Color(0xFF82FCF5),
-                            Color(0xFFC4A7FB),
-                            Color(0xFFDDA7BD),
-                            Color(0xFFF5AD73)
-                          ],
-                          stops: [0, 0.4, 0.7, 1],
-                          begin: AlignmentDirectional(-1, -1),
-                          end: AlignmentDirectional(1, 1),
-                        ),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Align(
-                        alignment: const AlignmentDirectional(0, 0),
-                        child: Padding(
-                          padding:
-                              const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
-                          child: FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
-                            },
-                            text: 'войти',
-                            options: FFButtonOptions(
-                              width: double.infinity,
-                              height: double.infinity,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16, 0, 16, 0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0, 0, 0, 0),
-                              color: Colors.transparent,
-                              textStyle:
-                                  CustomTheme.lightTheme.textTheme.titleSmall,
-                              elevation: 0,
-                              borderRadius: BorderRadius.circular(15),
+                  Align(
+                    alignment: AlignmentDirectional(0, 0),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 100),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            'Be loved',
+                            style: LoveAppTheme
+                                .miratrixLightTheme.textTheme.bodyMedium,
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(70, 0, 70, 86),
+                            child: Text(
+                              'Ваш общий дневник любви',
+                              textAlign: TextAlign.center,
+                              style: LoveAppTheme
+                                  .montserratLightTheme.textTheme.bodyMedium,
                             ),
                           ),
-                        ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 14),
+                            child: wrapWithModel(
+                              model: _model.primaryButtonModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: PrimaryButtonWidget(
+                                  actionText: 'Войти', onPressed: () {}),
+                            ).animateOnPageLoad(animationsMap[
+                                'primaryButtonOnPageLoadAnimation']!),
+                          ),
+                          wrapWithModel(
+                            model: _model.secondaryButtonModel,
+                            updateCallback: () => safeSetState(() {}),
+                            child: SecondaryButtonWidget(
+                              actionText: 'Зарегистрироваться',
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const RegisterWidget()),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  Container(
-                    width: 355,
-                    height: 54,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(color: Colors.white),
-                    ),
-                    child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: 'Зарегистрироваться',
-                      options: FFButtonOptions(
-                        width: double.infinity,
-                        height: double.infinity,
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                        iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                        color: const Color.fromARGB(0, 255, 255, 255),
-                        textStyle: const TextStyle(
-                          fontFamily: 'Miratrix',
-                          color: Colors.white,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.normal,
-                        ),
-                        elevation: 0,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 105,
-                  )
                 ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );
