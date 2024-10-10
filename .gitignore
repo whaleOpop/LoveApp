@@ -164,6 +164,7 @@ android
 lib
 .flutter-plugins
 .flutter-plugins-dependencies
+
 # VS code
 .vscode
 # PyCharm
