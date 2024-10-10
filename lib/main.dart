@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Love App',
-        debugShowCheckedModeBanner: true,
+        debugShowCheckedModeBanner: false,
         theme: LoveAppTheme.miratrixLightTheme,
         home: const HomePageWidget());
   }
