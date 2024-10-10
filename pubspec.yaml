@@ -52,12 +52,12 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-    - assets/videos/
-    - assets/audios/
-    - assets/lottie_animations/
-    - assets/rive_animations/
-    - assets/pdfs/
-    - assets/images/iPhone_14_&_15_Pro_-_29.jpg
+    # - assets/videos/
+    # - assets/audios/
+    # - assets/lottie_animations/
+    # - assets/rive_animations/
+    # - assets/pdfs/
+    - assets/images/background.jpg
   fonts:
     - family: Miratrix
       fonts:
