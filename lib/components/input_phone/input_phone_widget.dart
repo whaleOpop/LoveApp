@@ -61,7 +61,7 @@ class _InputPhoneWidgetState extends State<InputPhoneWidget> {
             ),
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                color: Color(0x00000000),
+                color: Colors.white,
                 width: 1,
               ),
               borderRadius: BorderRadius.circular(0),

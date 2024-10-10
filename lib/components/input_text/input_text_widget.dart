@@ -62,7 +62,7 @@ class _InputTextWidgetState extends State<InputTextWidget> {
             ),
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                color: Color(0x00000000),
+                color: Colors.white,
                 width: 1,
               ),
               borderRadius: BorderRadius.circular(0),

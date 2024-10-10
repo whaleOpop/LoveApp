@@ -1,4 +1,4 @@
-import 'package:loveapp/pages/register_page/register_widget.dart';
+
 
 import '/components/primary_button/primary_button_widget.dart';
 import '/components/secondary_button/secondary_button_widget.dart';
@@ -112,7 +112,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               model: _model.primaryButtonModel,
                               updateCallback: () => safeSetState(() {}),
                               child: PrimaryButtonWidget(
-                                  actionText: 'Войти', onPressed: () {}),
+                                actionText: 'Войти',
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/login');
+                                },
+                              ),
                             ).animateOnPageLoad(animationsMap[
                                 'primaryButtonOnPageLoadAnimation']!),
                           ),
@@ -122,12 +126,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             child: SecondaryButtonWidget(
                               actionText: 'Зарегистрироваться',
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const RegisterWidget()),
-                                );
+                                Navigator.pushNamed(context, '/register');
                               },
                             ),
                           ),
