@@ -88,7 +88,7 @@ class _LoginWidgetState extends State<LoginWidget>
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.asset(
-                    'assets/images/background.jpg',
+                    'assets/images/backgroundHelloPage.jpg',
                     width: double.infinity,
                     height: double.infinity,
                     fit: BoxFit.cover,
@@ -105,7 +105,7 @@ class _LoginWidgetState extends State<LoginWidget>
                     ),
                     child: Container(
                       width: double.infinity,
-                      height: 460,
+                      height: 500,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(0),
@@ -184,7 +184,9 @@ class _LoginWidgetState extends State<LoginWidget>
                                     updateCallback: () => safeSetState(() {}),
                                     child: PrimaryButtonWidget(
                                       actionText: 'войти',
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.pushNamed(context, '/codeInput');
+                                      },
                                     ),
                                   ).animateOnPageLoad(animationsMap[
                                       'primaryButtonOnPageLoadAnimation']!),
