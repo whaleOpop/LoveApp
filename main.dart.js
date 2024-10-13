@@ -74981,8 +74981,8 @@ A.air.prototype={
 $0(){},
 $S:0}
 A.ais.prototype={
-$0(){A.qT(this.a,"/login",t.X)
-A.qq()},
+$0(){A.qq()
+A.qT(this.a,"/login",t.X)},
 $S:0}
 A.aiv.prototype={
 $0(){var s=this.a
@@ -74993,8 +74993,8 @@ A.aiq.prototype={
 $0(){},
 $S:0}
 A.aiu.prototype={
-$0(){A.qT(this.a,"/register",t.X)
-A.qq()},
+$0(){A.qq()
+A.qT(this.a,"/register",t.X)},
 $S:0}
 A.Dw.prototype={
 bo(){this.c8()
