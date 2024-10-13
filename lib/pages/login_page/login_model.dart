@@ -25,6 +25,7 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
     primaryButtonModel = createModel(context, () => PrimaryButtonModel());
     subButtonModel = createModel(context, () => SubButtonModel());
   }
+  
 
   @override
   void dispose() {
