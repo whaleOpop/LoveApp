@@ -73,7 +73,7 @@ class _CodeInputWidgetState extends State<CodeInputWidget>
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
-                  'assets/images/iPhone_14_&_15_Pro_-_30.jpg',
+                  'assets/images/backgroundCodePage.jpg',
                   width: double.infinity,
                   height: double.infinity,
                   fit: BoxFit.cover,
