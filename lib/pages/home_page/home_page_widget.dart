@@ -58,16 +58,17 @@ class _HomePageWidgetState extends State<HomePageWidget>
   @override
   Widget build(BuildContext context) {
     return MediaQuery.removePadding(
-      context: context,
-      removeTop: true, // Remove only the top padding
-      child: ListView(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-          children: [
-            Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height,
-              color: LoveAppTheme.miratrixLightTheme.scaffoldBackgroundColor,
-              child: Align(
+        context: context,
+        removeTop: true, // Remove only the top padding
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: WillPopScope(
+            onWillPop: () async => false,
+            child: Scaffold(
+              key: scaffoldKey,
+              backgroundColor:
+                  LoveAppTheme.miratrixLightTheme.scaffoldBackgroundColor,
+              body: Align(
                 alignment: AlignmentDirectional(0, 0),
                 child: Container(
                   width: double.infinity,
@@ -75,6 +76,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   child: Stack(
                     children: [
                       ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
                         child: Image.asset(
                           'assets/images/backgroundHelloPage.jpg',
                           width: double.infinity,
@@ -141,7 +143,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                 ),
               ),
             ),
-          ]),
-    );
+          ),
+        ));
   }
 }
