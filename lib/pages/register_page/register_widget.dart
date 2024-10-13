@@ -87,7 +87,7 @@ class _RegisterWidgetState extends State<RegisterWidget>
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.asset(
-                    'assets/images/background.jpg',
+                    'assets/images/backgroundHelloPage.jpg',
                     width: double.infinity,
                     height: double.infinity,
                     fit: BoxFit.cover,
@@ -104,7 +104,7 @@ class _RegisterWidgetState extends State<RegisterWidget>
                     ),
                     child: Container(
                       width: double.infinity,
-                      height: 535,
+                      height: 575,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(0),

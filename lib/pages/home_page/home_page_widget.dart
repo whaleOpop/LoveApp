@@ -76,7 +76,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.asset(
-                      'assets/images/background.jpg',
+                      'assets/images/backgroundHelloPage.jpg',
                       width: double.infinity,
                       height: double.infinity,
                       fit: BoxFit.cover,
