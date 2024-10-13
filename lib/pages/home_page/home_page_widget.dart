@@ -57,90 +57,93 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: WillPopScope(
-        onWillPop: () async => false,
-        child: Scaffold(
-          key: scaffoldKey,
-          backgroundColor:
-              LoveAppTheme.miratrixLightTheme.scaffoldBackgroundColor,
-          body: Align(
-            alignment: AlignmentDirectional(0, 0),
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              child: Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      'assets/images/backgroundHelloPage.jpg',
-                      width: double.infinity,
-                      height: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(0, 0),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 100),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Be loved',
-                            style: LoveAppTheme
-                                .miratrixLightTheme.textTheme.bodyMedium,
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(70, 0, 70, 86),
-                            child: Text(
-                              'Ваш общий дневник любви',
-                              textAlign: TextAlign.center,
-                              style: LoveAppTheme
-                                  .montserratLightTheme.textTheme.bodyMedium,
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 14),
-                            child: wrapWithModel(
-                              model: _model.primaryButtonModel,
-                              updateCallback: () => safeSetState(() {}),
-                              child: PrimaryButtonWidget(
-                                actionText: 'Войти',
-                                onPressed: () {
-                                  HapticFeedback.mediumImpact();
-                                  Navigator.pushNamed(context, '/login');
-                                },
-                              ),
-                            ).animateOnPageLoad(animationsMap[
-                                'primaryButtonOnPageLoadAnimation']!),
-                          ),
-                          wrapWithModel(
-                            model: _model.secondaryButtonModel,
-                            updateCallback: () => safeSetState(() {}),
-                            child: SecondaryButtonWidget(
-                              actionText: 'Зарегистрироваться',
-                              onPressed: () {
-                                HapticFeedback.mediumImpact();
-                                Navigator.pushNamed(context, '/register');
-                              },
-                            ),
-                          ),
-                        ],
+    return MediaQuery.removePadding(
+        context: context,
+        removeTop: true, // Remove only the top padding
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: WillPopScope(
+            onWillPop: () async => false,
+            child: Scaffold(
+              key: scaffoldKey,
+              backgroundColor:
+                  LoveAppTheme.miratrixLightTheme.scaffoldBackgroundColor,
+              body: Align(
+                alignment: AlignmentDirectional(0, 0),
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          'assets/images/backgroundHelloPage.jpg',
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
+                      Align(
+                        alignment: AlignmentDirectional(0, 0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 100),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                'Be loved',
+                                style: LoveAppTheme
+                                    .miratrixLightTheme.textTheme.bodyMedium,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    70, 0, 70, 86),
+                                child: Text(
+                                  'Ваш общий дневник любви',
+                                  textAlign: TextAlign.center,
+                                  style: LoveAppTheme.montserratLightTheme
+                                      .textTheme.bodyMedium,
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 14),
+                                child: wrapWithModel(
+                                  model: _model.primaryButtonModel,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: PrimaryButtonWidget(
+                                    actionText: 'Войти',
+                                    onPressed: () {
+                                      HapticFeedback.mediumImpact();
+                                      Navigator.pushNamed(context, '/login');
+                                    },
+                                  ),
+                                ).animateOnPageLoad(animationsMap[
+                                    'primaryButtonOnPageLoadAnimation']!),
+                              ),
+                              wrapWithModel(
+                                model: _model.secondaryButtonModel,
+                                updateCallback: () => safeSetState(() {}),
+                                child: SecondaryButtonWidget(
+                                  actionText: 'Зарегистрироваться',
+                                  onPressed: () {
+                                    HapticFeedback.mediumImpact();
+                                    Navigator.pushNamed(context, '/register');
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
