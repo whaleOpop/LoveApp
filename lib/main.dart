@@ -9,6 +9,7 @@ import 'package:loveapp/pages/codeInput_page/codeInput_widget.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   runApp(const MyApp());
 }
 
