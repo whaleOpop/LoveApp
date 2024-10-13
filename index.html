@@ -34,9 +34,17 @@
   <link rel="icon" type="image/png" href="icons/icon_loveapp.jpg" />
   <style>
     body {
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    html,
+    body {
       height: 100vh;
       overflow: hidden;
     }
+
+
 
 
     #app {
