@@ -1,5 +1,3 @@
-
-
 import '/components/primary_button/primary_button_widget.dart';
 import '/components/secondary_button/secondary_button_widget.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
@@ -115,8 +113,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               child: PrimaryButtonWidget(
                                 actionText: 'Войти',
                                 onPressed: () {
-                                  Navigator.pushNamed(context, '/login');
                                   HapticFeedback.mediumImpact();
+                                  Navigator.pushNamed(context, '/login');
                                 },
                               ),
                             ).animateOnPageLoad(animationsMap[
@@ -128,8 +126,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             child: SecondaryButtonWidget(
                               actionText: 'Зарегистрироваться',
                               onPressed: () {
-                                Navigator.pushNamed(context, '/register');
                                 HapticFeedback.mediumImpact();
+                                Navigator.pushNamed(context, '/register');
                               },
                             ),
                           ),
