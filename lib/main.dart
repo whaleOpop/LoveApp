@@ -3,13 +3,12 @@ import 'package:loveapp/pages/home_page/home_page_widget.dart';
 import 'theme/love_app_theme.dart';
 import 'package:flutter/services.dart';
 
-
-
 import 'package:loveapp/pages/register_page/register_widget.dart';
 import 'package:loveapp/pages/login_page/login_widget.dart';
 import 'package:loveapp/pages/codeInput_page/codeInput_widget.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   runApp(const MyApp());
 }
