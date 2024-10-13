@@ -58,101 +58,90 @@ class _HomePageWidgetState extends State<HomePageWidget>
   @override
   Widget build(BuildContext context) {
     return MediaQuery.removePadding(
-        context: context,
-        removeTop: true, // Remove only the top padding
-        child: ListView(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-            children: [
-              Text("Залупа"),
-              GestureDetector(
-                onTap: () => FocusScope.of(context).unfocus(),
-                child: WillPopScope(
-                  onWillPop: () async => false,
-                  child: Container(
-                    width: double.infinity,
-                    height: MediaQuery.of(context).size.height,
-                    color:
-                        LoveAppTheme.miratrixLightTheme.scaffoldBackgroundColor,
-                    child: Align(
-                      alignment: AlignmentDirectional(0, 0),
-                      child: Container(
-                        width: double.infinity,
-                        height: double.infinity,
-                        child: Stack(
-                          children: [
-                            ClipRRect(
-                              child: Image.asset(
-                                'assets/images/backgroundHelloPage.jpg',
-                                width: double.infinity,
-                                height: double.infinity,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0, 0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0, 0, 0, 100),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      'Be loved',
-                                      style: LoveAppTheme.miratrixLightTheme
-                                          .textTheme.bodyMedium,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          70, 0, 70, 86),
-                                      child: Text(
-                                        'Ваш общий дневник любви',
-                                        textAlign: TextAlign.center,
-                                        style: LoveAppTheme.montserratLightTheme
-                                            .textTheme.bodyMedium,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 14),
-                                      child: wrapWithModel(
-                                        model: _model.primaryButtonModel,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: PrimaryButtonWidget(
-                                          actionText: 'Войти',
-                                          onPressed: () {
-                                            HapticFeedback.mediumImpact();
-                                            Navigator.pushNamed(
-                                                context, '/login');
-                                          },
-                                        ),
-                                      ).animateOnPageLoad(animationsMap[
-                                          'primaryButtonOnPageLoadAnimation']!),
-                                    ),
-                                    wrapWithModel(
-                                      model: _model.secondaryButtonModel,
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: SecondaryButtonWidget(
-                                        actionText: 'Зарегистрироваться',
-                                        onPressed: () {
-                                          HapticFeedback.mediumImpact();
-                                          Navigator.pushNamed(
-                                              context, '/register');
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
+      context: context,
+      removeTop: true, // Remove only the top padding
+      child: ListView(
+          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+          children: [
+            Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height,
+              color: LoveAppTheme.miratrixLightTheme.scaffoldBackgroundColor,
+              child: Align(
+                alignment: AlignmentDirectional(0, 0),
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Stack(
+                    children: [
+                      ClipRRect(
+                        child: Image.asset(
+                          'assets/images/backgroundHelloPage.jpg',
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.cover,
                         ),
                       ),
-                    ),
+                      Align(
+                        alignment: AlignmentDirectional(0, 0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 100),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                'Be loved',
+                                style: LoveAppTheme
+                                    .miratrixLightTheme.textTheme.bodyMedium,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    70, 0, 70, 86),
+                                child: Text(
+                                  'Ваш общий дневник любви',
+                                  textAlign: TextAlign.center,
+                                  style: LoveAppTheme.montserratLightTheme
+                                      .textTheme.bodyMedium,
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 14),
+                                child: wrapWithModel(
+                                  model: _model.primaryButtonModel,
+                                  updateCallback: () => safeSetState(() {}),
+                                  child: PrimaryButtonWidget(
+                                    actionText: 'Войти',
+                                    onPressed: () {
+                                      HapticFeedback.mediumImpact();
+                                      Navigator.pushNamed(context, '/login');
+                                    },
+                                  ),
+                                ).animateOnPageLoad(animationsMap[
+                                    'primaryButtonOnPageLoadAnimation']!),
+                              ),
+                              wrapWithModel(
+                                model: _model.secondaryButtonModel,
+                                updateCallback: () => safeSetState(() {}),
+                                child: SecondaryButtonWidget(
+                                  actionText: 'Зарегистрироваться',
+                                  onPressed: () {
+                                    HapticFeedback.mediumImpact();
+                                    Navigator.pushNamed(context, '/register');
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              )
-            ]));
+              ),
+            ),
+          ]),
+    );
   }
 }
