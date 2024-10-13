@@ -2,6 +2,11 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
 
+class UserLogin(BaseModel):
+    phone: str
+    password: str
+
+
 class UserCreate(BaseModel):
     name: str
     phone: str
