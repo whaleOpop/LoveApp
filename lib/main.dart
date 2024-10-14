@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:loveapp/pages/register_page/register_widget.dart';
 import 'package:loveapp/pages/login_page/login_widget.dart';
 import 'package:loveapp/pages/codeInput_page/codeInput_widget.dart';
+import 'package:loveapp/pages/partner_page/partner_widget.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
           '/login': (context) => const LoginWidget(),
           '/register': (context) => const RegisterWidget(),
           '/codeInput': (context) => const CodeInputWidget(),
+          '/partner': (context) => const PartnerWidget(),
         },
         debugShowCheckedModeBanner: false,
         theme: LoveAppTheme.miratrixLightTheme,

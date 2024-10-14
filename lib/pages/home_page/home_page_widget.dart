@@ -63,7 +63,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
         child: ListView(
             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
             children: [
-              Text("Залупа"),
               GestureDetector(
                 onTap: () => FocusScope.of(context).unfocus(),
                 child: WillPopScope(
