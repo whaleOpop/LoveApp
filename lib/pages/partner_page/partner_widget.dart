@@ -93,16 +93,16 @@ class _PartnerWidgetState extends State<PartnerWidget> {
                             alignment: AlignmentDirectional(0, 0),
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-0.64, 0.45),
+                                alignment: AlignmentDirectional(-0.54, 0.45),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 100),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(0),
                                     child: Image.asset(
-                                      'assets/images/newHeart3.png',
-                                      width: 153,
-                                      height: 155,
+                                      'assets/images/heartRight.png',
+                                      width: 180,
+                                      height: 180,
                                       fit: BoxFit.fill,
                                       alignment: Alignment(0, 0),
                                     ),
@@ -151,9 +151,9 @@ class _PartnerWidgetState extends State<PartnerWidget> {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(0),
                                     child: Image.asset(
-                                      'assets/images/newHeart3.png',
-                                      width: 95,
-                                      height: 91,
+                                      'assets/images/heartLeft.png',
+                                      width: 130,
+                                      height: 130,
                                       fit: BoxFit.contain,
                                       alignment: Alignment(0, 0),
                                     ),
@@ -187,9 +187,9 @@ class _PartnerWidgetState extends State<PartnerWidget> {
                           model: _model.primaryButtonModel,
                           updateCallback: () => safeSetState(() {}),
                           child: PrimaryButtonWidget(
-                            actionText: 'войти',
+                            actionText: 'да, все верно',
                             onPressed: () {
-                              Navigator.pushNamed(context, '/codeInput');
+                              Navigator.pushNamed(context, '/');
                             },
                           ),
                         ).animateOnPageLoad(animationsMap[
@@ -199,9 +199,9 @@ class _PartnerWidgetState extends State<PartnerWidget> {
                         model: _model.subButtonModel,
                         updateCallback: () => safeSetState(() {}),
                         child: SubButtonWidget(
-                          actionText: 'Нет аккаунта? Зарегистрироваться',
+                          actionText: 'Ввести код заново',
                           onPressed: () {
-                            Navigator.pushNamed(context, '/register');
+                            Navigator.pushNamed(context, '/codeInput');
                           },
                         ),
                       ),
