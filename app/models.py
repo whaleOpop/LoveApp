@@ -4,11 +4,12 @@ from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
+
 class User(Base):
     __tablename__ = "users"
     id = Column(String, primary_key=True, index=True)
     name = Column(String, nullable=False)
-    phone = Column(String, nullable=False)
+    phone = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
     photo = Column(BLOB)
     age = Column(Integer)
@@ -16,11 +17,13 @@ class User(Base):
     city = Column(String)
     uuid = Column(String, unique=True)
 
+
 class Gallery(Base):
     __tablename__ = "gallery"
     id = Column(String, primary_key=True, index=True)
     name = Column(String, nullable=False)
     description = Column(String, nullable=False)
+
 
 class Photo(Base):
     __tablename__ = "photo"
@@ -28,6 +31,7 @@ class Photo(Base):
     description = Column(String, nullable=False)
     photo = Column(BLOB, nullable=False)
     id_gallery = Column(String, ForeignKey('gallery.id'))
+
 
 class Couple(Base):
     __tablename__ = "couple"
