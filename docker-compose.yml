@@ -5,6 +5,8 @@ services:
     build: .
     ports:
       - "8080:8000"
+    volumes:
+      - .:/app
     environment:
       - DATABASE_URL=mysql+pymysql://root:0fM94p7u#hZ$@loveapp-mysql:3306/loveappdb
     depends_on:
