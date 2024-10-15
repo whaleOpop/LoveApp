@@ -3,7 +3,6 @@ import '/components/sub_button/sub_button_widget.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 
 import 'codeInput_widget.dart' show CodeInputWidget;
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
 
 class CodeInputModel extends FlutterFlowModel<CodeInputWidget> {
