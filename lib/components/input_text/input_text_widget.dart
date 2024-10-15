@@ -40,8 +40,8 @@ class _InputTextWidgetState extends State<InputTextWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0, 0),
-      child: Container(
+      alignment: const AlignmentDirectional(0, 0),
+      child: SizedBox(
         width: 266,
         child: TextFormField(
           controller: _model.textController,
@@ -54,34 +54,34 @@ class _InputTextWidgetState extends State<InputTextWidget> {
             hintText: 'Имя',
             hintStyle: LoveAppTheme.montserratLightTheme.textTheme.titleSmall,
             enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.white,
                 width: 1,
               ),
               borderRadius: BorderRadius.circular(0),
             ),
             focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.white,
                 width: 1,
               ),
               borderRadius: BorderRadius.circular(0),
             ),
             errorBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.red,
                 width: 1,
               ),
               borderRadius: BorderRadius.circular(0),
             ),
             focusedErrorBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.red,
                 width: 1,
               ),
               borderRadius: BorderRadius.circular(0),
             ),
-            contentPadding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 16),
+            contentPadding: const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 16),
           ),
           style: LoveAppTheme.montserratLightTheme.textTheme.titleSmall,
           cursorColor: Colors.white,
