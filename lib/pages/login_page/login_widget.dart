@@ -42,8 +42,8 @@ class _LoginWidgetState extends State<LoginWidget>
             curve: Curves.easeInOutQuint,
             delay: 0.0.ms,
             duration: 500.0.ms,
-            begin: Offset(0.0, 800.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 800.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -55,7 +55,7 @@ class _LoginWidgetState extends State<LoginWidget>
             curve: Curves.easeInOut,
             delay: 2000.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -79,8 +79,8 @@ class _LoginWidgetState extends State<LoginWidget>
         backgroundColor:
             LoveAppTheme.miratrixLightTheme.scaffoldBackgroundColor,
         body: Align(
-          alignment: AlignmentDirectional(0, 0),
-          child: Container(
+          alignment: const AlignmentDirectional(0, 0),
+          child: SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: Stack(
@@ -95,9 +95,9 @@ class _LoginWidgetState extends State<LoginWidget>
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0, 1),
+                  alignment: const AlignmentDirectional(0, 1),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(0),
                       bottomRight: Radius.circular(0),
                       topLeft: Radius.circular(50),
@@ -107,19 +107,19 @@ class _LoginWidgetState extends State<LoginWidget>
                       width: double.infinity,
                       height: 500,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(0),
                           bottomRight: Radius.circular(0),
                           topLeft: Radius.circular(50),
                           topRight: Radius.circular(50),
                         ),
                         border: Border.all(
-                          color: Color(0xFF433E45),
+                          color: const Color(0xFF433E45),
                           width: 1,
                         ),
                       ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(0),
                           bottomRight: Radius.circular(0),
                           topLeft: Radius.circular(50),
@@ -132,12 +132,12 @@ class _LoginWidgetState extends State<LoginWidget>
                           ),
                           child: Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                                const EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 8),
                                   child: Text(
                                     'Здравствуйте!',
@@ -145,7 +145,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       70, 0, 70, 40),
                                   child: Text(
                                     'Больше, чем просто пара — это ваши общие воспоминания',
@@ -154,28 +154,28 @@ class _LoginWidgetState extends State<LoginWidget>
                                     ),
                                   ),
                                 Align(
-                                  alignment: AlignmentDirectional(0, 0),
+                                  alignment: const AlignmentDirectional(0, 0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 0, 26),
                                     child: wrapWithModel(
                                       model: _model.inputPhoneModel,
                                       updateCallback: () => safeSetState(() {}),
-                                      child: InputPhoneWidget(),
+                                      child: const InputPhoneWidget(),
                                     ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 50),
                                   child: wrapWithModel(
                                     model: _model.inputPasswordModel,
                                     updateCallback: () => safeSetState(() {}),
-                                    child: InputPasswordWidget(),
+                                    child: const InputPasswordWidget(),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 10),
                                   child: wrapWithModel(
                                     model: _model.primaryButtonModel,
