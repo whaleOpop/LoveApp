@@ -38,8 +38,8 @@ class _CodeInputWidgetState extends State<CodeInputWidget>
             curve: Curves.easeInOutQuint,
             delay: 0.0.ms,
             duration: 500.0.ms,
-            begin: Offset(0.0, 800.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 800.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -80,9 +80,9 @@ class _CodeInputWidgetState extends State<CodeInputWidget>
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0, 0),
+                alignment: const AlignmentDirectional(0, 0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 60),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 60),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -92,7 +92,7 @@ class _CodeInputWidgetState extends State<CodeInputWidget>
                         style: LoveAppTheme.miratrixLightTheme.textTheme.bodyMedium,
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(70, 0, 70, 26),
+                        padding: const EdgeInsetsDirectional.fromSTEB(70, 0, 70, 26),
                         child: Text(
                           'Укажи код твоей второй половинки',
                           textAlign: TextAlign.center,
@@ -101,7 +101,7 @@ class _CodeInputWidgetState extends State<CodeInputWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(60, 110, 60, 180),
+                            const EdgeInsetsDirectional.fromSTEB(60, 110, 60, 180),
                         child: PinCodeTextField(
                           autoDisposeControllers: false,
                           appContext: context,
@@ -120,7 +120,7 @@ class _CodeInputWidgetState extends State<CodeInputWidget>
                             fieldHeight: 58,
                             fieldWidth: 44,
                             borderWidth: 1,
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(10),
                               bottomRight: Radius.circular(10),
                               topLeft: Radius.circular(10),
@@ -152,7 +152,7 @@ class _CodeInputWidgetState extends State<CodeInputWidget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                         child: wrapWithModel(
                           model: _model.primaryButtonModel,
                           updateCallback: () => safeSetState(() {}),
