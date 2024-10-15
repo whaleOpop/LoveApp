@@ -14,16 +14,16 @@ class UserCreate(BaseModel):
     age: int
     zodiac: str
     city: str
-    uuid: int
+    uuid: str
 
 class UserResponse(BaseModel):
-    id: int
+    id: str
     name: str
     phone: str
     age: int
     zodiac: str
     city: str
-    uuid: int
+    uuid: str
     class Config:
         orm_mode = True
 
@@ -32,7 +32,7 @@ class GalleryCreate(BaseModel):
     description: str
 
 class GalleryResponse(BaseModel):
-    id: int
+    id: str
     name: str
     description: str
     class Config:
@@ -41,28 +41,28 @@ class GalleryResponse(BaseModel):
 class PhotoCreate(BaseModel):
     description: str
     photo: bytes
-    id_gallery: int
+    id_gallery: str
 
 class PhotoResponse(BaseModel):
-    id: int
+    id: str
     description: str
-    id_gallery: int
+    id_gallery: str
     class Config:
         orm_mode = True
 
 class CoupleCreate(BaseModel):
     start_date: datetime
     end_date: Optional[datetime]
-    id_para_man: int
-    id_para_women: int
-    id_gallery: Optional[int]
+    id_para_man: str
+    id_para_women: str
+    id_gallery: Optional[str]
 
 class CoupleResponse(BaseModel):
-    id: int
+    id: str
     start_date: datetime
     end_date: Optional[datetime]
-    id_para_man: int
-    id_para_women: int
-    id_gallery: Optional[int]
+    id_para_man: str
+    id_para_women: str
+    id_gallery: Optional[str]
     class Config:
         orm_mode = True
