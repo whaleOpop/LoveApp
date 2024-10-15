@@ -38,8 +38,8 @@ class _PartnerWidgetState extends State<PartnerWidget> {
             curve: Curves.easeInOutQuint,
             delay: 0.0.ms,
             duration: 500.0.ms,
-            begin: Offset(0.0, 800.0),
-            end: Offset(0.0, 0.0),
+            begin: const Offset(0.0, 800.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -51,7 +51,7 @@ class _PartnerWidgetState extends State<PartnerWidget> {
             curve: Curves.easeInOut,
             delay: 2000.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -78,24 +78,24 @@ class _PartnerWidgetState extends State<PartnerWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(0, 0),
+                alignment: const AlignmentDirectional(0, 0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 60),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 60),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0, 0),
-                        child: Container(
+                        alignment: const AlignmentDirectional(0, 0),
+                        child: SizedBox(
                           width: double.infinity,
                           child: Stack(
-                            alignment: AlignmentDirectional(0, 0),
+                            alignment: const AlignmentDirectional(0, 0),
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-0.54, 0.45),
+                                alignment: const AlignmentDirectional(-0.54, 0.45),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 100),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(0),
@@ -104,19 +104,19 @@ class _PartnerWidgetState extends State<PartnerWidget> {
                                       width: 180,
                                       height: 180,
                                       fit: BoxFit.fill,
-                                      alignment: Alignment(0, 0),
+                                      alignment: const Alignment(0, 0),
                                     ),
                                   ),
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0, 100, 0, 50),
                                 child: Container(
                                   width: 170,
                                   height: 170,
                                   decoration: BoxDecoration(
-                                    gradient: LinearGradient(
+                                    gradient: const LinearGradient(
                                       colors: [
                                         Color(0xFF82FCF5),
                                         Color(0xFFC4A7FB),
@@ -130,7 +130,7 @@ class _PartnerWidgetState extends State<PartnerWidget> {
                                     borderRadius: BorderRadius.circular(85),
                                   ),
                                   child: Align(
-                                    alignment: AlignmentDirectional(0, 0),
+                                    alignment: const AlignmentDirectional(0, 0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(99),
                                       child: Image.asset(
@@ -144,9 +144,9 @@ class _PartnerWidgetState extends State<PartnerWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.54, 0.2),
+                                alignment: const AlignmentDirectional(0.54, 0.2),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0, 150, 0, 0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(0),
@@ -155,7 +155,7 @@ class _PartnerWidgetState extends State<PartnerWidget> {
                                       width: 130,
                                       height: 130,
                                       fit: BoxFit.contain,
-                                      alignment: Alignment(0, 0),
+                                      alignment: const Alignment(0, 0),
                                     ),
                                   ),
                                 ),
@@ -165,14 +165,14 @@ class _PartnerWidgetState extends State<PartnerWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                         child: Text(
                           'Кирилл',
                           style: LoveAppTheme.miratrixLightTheme.textTheme.bodyMedium,
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(70, 0, 70, 160),
+                        padding: const EdgeInsetsDirectional.fromSTEB(70, 0, 70, 160),
                         child: Text(
                           'Ваш партнер?',
                           textAlign: TextAlign.center,
@@ -181,7 +181,7 @@ class _PartnerWidgetState extends State<PartnerWidget> {
                       ),
                       
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             0, 0, 0, 10),
                         child: wrapWithModel(
                           model: _model.primaryButtonModel,
