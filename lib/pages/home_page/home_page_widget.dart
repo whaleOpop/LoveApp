@@ -40,7 +40,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
             curve: Curves.easeInOut,
             delay: 2000.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -61,7 +61,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
         context: context,
         removeTop: true, // Remove only the top padding
         child: ListView(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
             children: [
               GestureDetector(
                 onTap: () => FocusScope.of(context).unfocus(),
@@ -73,8 +73,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     color:
                         LoveAppTheme.miratrixLightTheme.scaffoldBackgroundColor,
                     child: Align(
-                      alignment: AlignmentDirectional(0, 0),
-                      child: Container(
+                      alignment: const AlignmentDirectional(0, 0),
+                      child: SizedBox(
                         width: double.infinity,
                         height: double.infinity,
                         child: Stack(
@@ -88,9 +88,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0, 0),
+                              alignment: const AlignmentDirectional(0, 0),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0, 0, 0, 100),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -102,7 +102,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           .textTheme.bodyMedium,
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           70, 0, 70, 86),
                                       child: Text(
                                         'Ваш общий дневник любви',
@@ -112,7 +112,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 14),
                                       child: wrapWithModel(
                                         model: _model.primaryButtonModel,
