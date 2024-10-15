@@ -44,14 +44,14 @@ class _SubButtonWidgetState extends State<SubButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0, 0),
+      alignment: const AlignmentDirectional(0, 0),
       child: FFButtonWidget(
         onPressed: widget.onPressed,
-        text: widget!.actionText,
+        text: widget.actionText,
         options: FFButtonOptions(
           height: 40,
-          padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-          iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+          padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+          iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
           color: Colors.transparent,
           textStyle: LoveAppTheme.montserratLightTheme.textTheme.titleSmall,
           elevation: 0,
