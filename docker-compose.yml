@@ -8,7 +8,7 @@ services:
     volumes:
       - .:/app
     environment:
-      - DATABASE_URL=mysql+pymysql://root:0fM94p7u#hZ$@loveapp-mysql:3306/loveappdb
+      - DATABASE_URL=mysql+pymysql://root:0fM94p7u#hZ$@202.181.188.132:3306/loveappdb
     depends_on:
       - loveapp-mysql
 
@@ -21,3 +21,8 @@ services:
       MYSQL_PASSWORD: '0fM94p7u#hZ$'
     ports:
       - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:/var/lib/mysql
