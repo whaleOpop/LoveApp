@@ -7,6 +7,20 @@ services:
       - "8080:8000"
     volumes:
       - .:/app
-      - ./database:/app/database
     environment:
-      - DATABASE_URL=sqlite:///./database/database.db
+      - DATABASE_URL=mysql+pymysql://root:0fM94p7u@loveapp-mysql:3306/loveappdb
+
+  loveapp-mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 0fM94p7u#hZ$  # Замените на ваш пароль
+      MYSQL_DATABASE: loveappdb           # Имя базы данных
+      MYSQL_USER: root                   # Имя пользователя
+      MYSQL_PASSWORD: 0fM94p7u#hZ$           # Пароль пользователя
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  db_data:
