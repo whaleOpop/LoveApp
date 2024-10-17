@@ -16,7 +16,7 @@ class User(Base):
     zodiac = Column(String)
     city = Column(String)
     uuid = Column(String, unique=True)
-
+    sessionid = Column(String, unique=True)
 
 class Gallery(Base):
     __tablename__ = "gallery"
