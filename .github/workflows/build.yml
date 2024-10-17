@@ -44,15 +44,10 @@ jobs:
           uses: actions/checkout@v4
 
         - name: Setup SSH Keys and known_hosts
-          env:
-              SSH_AUTH_SOCK: /tmp/ssh_agent.sock
           run: |
-            mkdir -p ~/.ssh
-            echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-            chmod 600 ~/.ssh/id_rsa
-            eval "$(ssh-agent -s)"
-            ssh-add ~/.ssh/id_rsa
-            ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+            intall -m 600 -D /dev/null ~/.ssh/id_rsa
+            echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
+            ssh-keyscan -H ${{secrets.SSH_HOST}} > ~/.ssh/know_hosts
 
         - name: Deploy to Host
           env:
