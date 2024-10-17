@@ -85,7 +85,6 @@ class _RegisterWidgetState extends State<RegisterWidget>
             child: Stack(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
                   child: Image.asset(
                     'assets/images/backgroundHelloPage.jpg',
                     width: double.infinity,
@@ -196,7 +195,7 @@ class _RegisterWidgetState extends State<RegisterWidget>
                                   model: _model.subButtonModel,
                                   updateCallback: () => safeSetState(() {}),
                                   child: SubButtonWidget(
-                                    actionText: 'Уже есть аккуаунт? Войти',
+                                    actionText: 'Уже есть аккаунт? Войти',
                                     onPressed: () {
                                       Navigator.pushNamed(context, '/login');
                                     },

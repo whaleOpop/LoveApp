@@ -1,7 +1,6 @@
 import '/components/primary_button/primary_button_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 import '/theme/love_app_theme.dart';
@@ -116,41 +115,65 @@ class _MainWidgetState extends State<MainWidget> {
                               alignment: AlignmentDirectional(0, 0),
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(1, 0),
-                                  child: FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
-                                    },
-                                    text: '',
-                                    options: FFButtonOptions(
-                                      width: 54,
-                                      height: 54,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          15, 0, 10, 0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0, 0, 0, 0),
-                                      color: Colors.black,
-                                      elevation: 0,
-                                      borderSide: BorderSide(
-                                        color: Color(0xFF433E45),
-                                        width: 1,
-                                      ),
-                                      borderRadius: BorderRadius.circular(27),
-                                    ),
-                                  ),
-                                ),
-                                Align(
                                   alignment: AlignmentDirectional(0, 0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: SvgPicture.asset(
-                                      'assets/images/icons/settings.svg',
-                                      width: 20,
-                                      height: 20,
-                                      fit: BoxFit.cover,
-                                      alignment: Alignment(0, 0),
-                                    ),
+                                  child: Stack(
+                                    alignment: AlignmentDirectional(0, 0),
+                                    children: [
+                                      Align(
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(27),
+                                          child: Container(
+                                            width: 54,
+                                            height: 54,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(27),
+                                            ),
+                                            child: Align(
+                                              alignment: AlignmentDirectional(0, 0),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.circular(0),
+                                                child: BackdropFilter(
+                                                  filter: ImageFilter.blur(
+                                                    sigmaX: 10,
+                                                    sigmaY: 10,
+                                                  ),
+                                                  child: Stack(
+                                                    children: [
+                                                      FlutterFlowIconButton(
+                                                        borderColor: Color(0xFF433E45),
+                                                        borderRadius: 27,
+                                                        borderWidth: 1,
+                                                        buttonSize: 54,
+                                                        icon: Icon(
+                                                          Icons.arrow_back,
+                                                          size: 0,
+                                                        ),
+                                                        
+                                                      ),
+                                                      ClipRRect(
+                                                        borderRadius: BorderRadius.circular(8),
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            Navigator.pushNamed(context, '/profile');
+                                                          },
+                                                          child: Image.asset(
+                                                            'assets/images/icons/user.png',
+                                                            width: 54,
+                                                            height: 54,
+                                                            fit: BoxFit.none,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],

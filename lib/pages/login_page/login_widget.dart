@@ -86,7 +86,6 @@ class _LoginWidgetState extends State<LoginWidget>
             child: Stack(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
                   child: Image.asset(
                     'assets/images/backgroundHelloPage.jpg',
                     width: double.infinity,
