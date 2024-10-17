@@ -12,13 +12,30 @@ def hash_password(password: str) -> str:
     return hashed_password.decode('utf-8')
 
 
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
+
+
 def create_user(db: Session, user: UserCreate):
-    hashed_password = hash_password(user.password)  # Hash the password
-    db_user = User(id=str(uuid4()), **user.dict(exclude={"password"}), password=hashed_password)
+    hashed_password = hash_password(user.password)
+    db_user = User(id=str(uuid4()), **user.dict(
+        exclude={"password"}), password=hashed_password, sessionid=str(uuid4()))
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
     return db_user
+
+
+def update_user_token(db: Session, sessionid: str):
+    db_user = get_user_by_session_id(db, sessionid)
+    db_user.sessionid = str(uuid4())
+    db.commit()
+    db.refresh(db_user)
+    return {"session_token": db_user.sessionid}
+
+
+def get_user_by_session_id(db: Session, sessionid: str):
+    return db.query(User).filter(User.sessionid == sessionid).first()
 
 
 def get_user_by_phone(db: Session, phone: str):
@@ -31,10 +48,8 @@ def get_user(db: Session, user_id: str):
 
 def delete_user(db: Session, user_id: str):
     db_user = db.query(User).filter(User.id == user_id).first()
-
     if db_user is None:
         raise HTTPException(status_code=404, detail="User is not found")
-
     db.delete(db_user)
     db.commit()
     return {"details": "User successfully deleted"}
