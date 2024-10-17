@@ -6,6 +6,10 @@ class UserLogin(BaseModel):
     phone: str
     password: str
 
+class UserRegister(BaseModel):
+    name: str
+    phone: str
+    password: str
 
 class UserCreate(BaseModel):
     name: str
