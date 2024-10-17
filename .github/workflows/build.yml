@@ -45,7 +45,7 @@ jobs:
 
         - name: Setup SSH Keys and known_hosts
           run: |
-            intall -m 600 -D /dev/null ~/.ssh/id_rsa
+            install -m 600 -D /dev/null ~/.ssh/id_rsa
             echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
             ssh-keyscan -H ${{secrets.SSH_HOST}} > ~/.ssh/know_hosts
 
