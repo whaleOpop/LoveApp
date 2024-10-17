@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}-docker-db
+  IMAGE_NAME: ghcr.io/whaleopop/loveapp-docker-db
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.IMAGE_NAME }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5.3.0
@@ -52,17 +52,12 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-          cat ~/.ssh/id_rsa
-      - name: Check SSH key
-        run: |
-          ls -la ~/.ssh
-          cat ~/.ssh/id_rsa
-        
+
       - name: Start ssh-agent and add SSH key
         run: |
           eval $(ssh-agent -s)
           ssh-add ~/.ssh/id_rsa
-      
+
       - name: Install sshpass
         run: sudo apt-get install sshpass
 
@@ -87,6 +82,6 @@ jobs:
       - name: Pull and deploy new Docker container
         run: |
           sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} << 'EOF'
-          docker pull $REGISTRY/${{ github.repository }}:docker-db
-          docker run -d --name docker-db -p 8080:8000 $REGISTRY/${{ github.repository }}:docker-db
+          docker pull ${{ env.IMAGE_NAME }}
+          docker run -d --name docker-db -p 8080:8000 ${{ env.IMAGE_NAME }}
           EOF
