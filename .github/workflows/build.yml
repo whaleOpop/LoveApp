@@ -51,7 +51,7 @@ jobs:
 
         - name: Deploy to Host
           env:
-            HOST: ${{ secrets.HOST }}
+            HOST: ${{ secrets.SSH_HOST }}
           run: |
             ssh root@${{ secrets.HOST }}
             ${{secrets.SSH_PASSWORD}}
