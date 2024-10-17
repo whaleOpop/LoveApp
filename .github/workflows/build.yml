@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ghcr.io/whaleopop/loveapp-docker-db
+  IMAGE_NAME: ghcr.io/whaleopop/loveapp-docker-db:docker-db
 
 jobs:
   build:
