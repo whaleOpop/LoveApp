@@ -52,7 +52,7 @@ class _InputTextWidgetState extends State<InputTextWidget> {
           decoration: InputDecoration(
             isDense: true,
             hintText: 'Имя',
-            hintStyle: LoveAppTheme.montserratLightTheme.textTheme.titleSmall,
+            hintStyle: LoveAppTheme.montserratLightTheme.textTheme.bodyMedium,
             enabledBorder: UnderlineInputBorder(
               borderSide: const BorderSide(
                 color: Colors.white,
@@ -83,7 +83,7 @@ class _InputTextWidgetState extends State<InputTextWidget> {
             ),
             contentPadding: const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 16),
           ),
-          style: LoveAppTheme.montserratLightTheme.textTheme.titleSmall,
+          style: LoveAppTheme.montserratLightTheme.textTheme.bodyMedium,
           cursorColor: Colors.white,
           validator: _model.textControllerValidator.asValidator(context),
         ),

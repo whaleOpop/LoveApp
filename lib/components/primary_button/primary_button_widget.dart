@@ -72,7 +72,7 @@ class _PrimaryButtonWidgetState extends State<PrimaryButtonWidget> {
               padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
               iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
               color: Colors.transparent,
-              textStyle: LoveAppTheme.miratrixLightTheme.textTheme.titleSmall,
+              textStyle: LoveAppTheme.miratrixLightTheme.textTheme.labelLarge,
               elevation: 0,
               borderRadius: BorderRadius.circular(15),
             ),
