@@ -48,10 +48,9 @@ jobs:
 
       - name: Setup SSH Keys and known_hosts
         run: |
-          # Создаем файл закрытого ключа и задаем права доступа
+          mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          # Добавляем хост в known_hosts
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       
       - name: Start ssh-agent and add SSH key
