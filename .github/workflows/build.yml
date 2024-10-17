@@ -53,7 +53,7 @@ jobs:
           env:
             HOST: ${{ secrets.HOST }}
           run: |
-            ssh root@${HOST}"
+            ssh root@${{ secrets.HOST }}
         - name: Stop docker container
           run: | 
               docker stop docker-db
