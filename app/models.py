@@ -11,12 +11,13 @@ class User(Base):
     name = Column(String, nullable=False)
     phone = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
-    photo = Column(BLOB)
-    age = Column(Integer)
-    zodiac = Column(String)
-    city = Column(String)
-    uuid = Column(String, unique=True)
-    sessionid = Column(String, unique=True)
+    photo = Column(BLOB, nullable=True)
+    age = Column(Integer, nullable=True)
+    zodiac = Column(String, nullable=True)
+    city = Column(String, nullable=True)
+    uuid = Column(String, unique=True, nullable=True)
+    sessionid = Column(String, unique=True, nullable=False)
+
 
 class Gallery(Base):
     __tablename__ = "gallery"
