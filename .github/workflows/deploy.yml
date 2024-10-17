@@ -13,38 +13,23 @@ jobs:
     environment: production
 
     steps:
-      - name: Checkout 
-        uses: actions/checkout@v4.1.1
-        env:
-          GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          fetch-depth: 0
-
-      - name: Install ssh keys
+      - name: Connect to ssh
         run: |
-          install -m 600 -D /dev/null ~/.ssh/id_rsa
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
-          docker context create remote --docker host=ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
+          ssh root@${{ secrets.SSH_HOST }}
+          ${{secrets.SSH_PRIVATE_KEY}}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
-      - name: Log in to the Container registry
-        uses: docker/login-action@v3.0.0
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Docker compose
-        env:
-          IMAGE_REF: ${{ steps.meta.outputs.tags }}
-        run: |
-          docker-compose --context remote -f docker-compose.yml up -d
-
-      - name: cleanup
-        run: rm -rf ~/.ssh
+      - name: Stop docker container
+        run: | 
+          docker stop docker-db
+      - name: Delete docker container
+        run: | 
+          docker delete docker-db
+      - name: Pull the latest image
+        run: | 
+          docker pull $REGISTRY/${{ github.repository }}:docker-db
+      - name: Deploy container
+        run: | 
+          docker run -d --name docker-db -p 8080:8000 $REGISTRY/${{ github.repository }}:docker-db
+      
+        
+      
