@@ -36,3 +36,32 @@ jobs:
                 push: true
                 tags: ${{ steps.meta.outputs.tags }}
                 labels: ${{ steps.meta.outputs.labels }}
+    deploy:
+      runs-on: ubuntu-latest
+      needs: build
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+
+        - name: Copy SSH Key
+          uses: webfactory/ssh-agent@v0.9.0
+          with:
+            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+        - name: Deploy to Host
+          env:
+            HOST: ${{ secrets.HOST }}
+          run: |
+            ssh -o StrictHostKeyChecking=no root@${HOST} "
+        - name: Stop docker container
+          run: | 
+              docker stop docker-db
+        - name: Delete docker container
+          run: | 
+              docker delete docker-db
+        - name: Pull the latest image
+          run: | 
+              docker pull $REGISTRY/${{ github.repository }}:docker-db
+        - name: Deploy container
+          run: | 
+              docker run -d --name docker-db -p 8080:8000 $REGISTRY/${{ github.repository }}:docker-db
