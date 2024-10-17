@@ -53,8 +53,7 @@ jobs:
           env:
             HOST: ${{ secrets.SSH_HOST }}
           run: |
-            ssh root@${{ secrets.HOST }}
-            ${{secrets.SSH_PASSWORD}}
+            ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }}
         - name: Stop docker container
           run: | 
               docker stop docker-db
