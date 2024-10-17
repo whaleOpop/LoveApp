@@ -43,10 +43,12 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v4
 
-        - name: Copy SSH Key
-          uses: webfactory/ssh-agent@v0.9.0
-          with:
-            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        - name: Setup SSH Keys and known_hosts
+          env:
+              SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          run: |
+              ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+              ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
 
         - name: Deploy to Host
           env:
