@@ -54,7 +54,7 @@ jobs:
           env:
             HOST: ${{ secrets.SSH_HOST }}
           run: |
-            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@${{ secrets.SSH_HOST }} << 'EOF'
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@${{ secrets.SSH_HOST }} 
         - name: Stop docker container
           run: | 
               docker stop docker-db
