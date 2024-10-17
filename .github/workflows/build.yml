@@ -63,22 +63,30 @@ jobs:
           eval $(ssh-agent -s)
           ssh-add ~/.ssh/id_rsa
       
+      - name: Install sshpass
+        run: sudo apt-get install sshpass
 
-      - name: Execute remote commands
+      - name: Execute remote commands with sshpass
         run: |
-          ssh root@${{ secrets.SSH_HOST }} 
+          sshpass -p "${{ secrets.SSH_PASSWORD}}" ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} << 'EOF'
+          if ! id -u deploy_user &>/dev/null; then
+            useradd -m deploy_user
+            echo "deploy_user:password" | chpasswd
+            usermod -aG docker deploy_user
+          fi
+          EOF
 
       - name: Stop and delete existing Docker container
         run: |
-          ssh -tt -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@${{ secrets.SSH_HOST }} << 'EOF'
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} << 'EOF'
           if docker ps -a --format '{{.Names}}' | grep -Eq '^docker-db$'; then
             docker stop docker-db && docker rm docker-db
           fi
-   
+          EOF
 
       - name: Pull and deploy new Docker container
         run: |
-          ssh -tt -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@${{ secrets.SSH_HOST }} << 'EOF'
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} << 'EOF'
           docker pull $REGISTRY/${{ github.repository }}:docker-db
           docker run -d --name docker-db -p 8080:8000 $REGISTRY/${{ github.repository }}:docker-db
-   
+          EOF
