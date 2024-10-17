@@ -99,7 +99,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     Text(
                                       'Be loved',
                                       style: LoveAppTheme.miratrixLightTheme
-                                          .textTheme.bodyMedium,
+                                          .textTheme.headlineLarge,
                                     ),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
@@ -108,7 +108,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         'Ваш общий дневник любви',
                                         textAlign: TextAlign.center,
                                         style: LoveAppTheme.montserratLightTheme
-                                            .textTheme.bodyMedium,
+                                            .textTheme.bodySmall,
                                       ),
                                     ),
                                     Padding(

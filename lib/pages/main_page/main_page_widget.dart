@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 import '/theme/love_app_theme.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import 'main_page_model.dart';
 export 'main_page_model.dart';
@@ -21,11 +22,53 @@ class _MainWidgetState extends State<MainWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+    final animationsMap = <String, AnimationInfo>{};
+
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => MainModel());
+
+    animationsMap.addAll({
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.elasticOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: Offset(0.0, 400.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'rowOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.elasticOut,
+            delay: 100.0.ms,
+            duration: 1000.0.ms,
+            begin: Offset(0.0, 400.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.elasticOut,
+            delay: 200.0.ms,
+            duration: 1000.0.ms,
+            begin: Offset(0.0, 400.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
   }
+
 
   @override
   void dispose() {
@@ -128,7 +171,7 @@ class _MainWidgetState extends State<MainWidget> {
                                 EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
                             child: Container(
                               width: double.infinity,
-                              height: 270,
+                              height: 280,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
                                 border: Border.all(
@@ -151,11 +194,11 @@ class _MainWidgetState extends State<MainWidget> {
                                       children: [
                                         Text(
                                           '36 дней',
-                                          style: LoveAppTheme.miratrixLightTheme.textTheme.bodyMedium,
+                                          style: LoveAppTheme.miratrixLightTheme.textTheme.titleMedium,
                                         ),
                                         Text(
                                           'Вместе',
-                                          style: LoveAppTheme.montserratLightTheme.textTheme.bodyMedium,
+                                          style: LoveAppTheme.montserratLightTheme.textTheme.bodySmall,
                                         ),
                                         Padding(
                                           padding:
@@ -173,7 +216,7 @@ class _MainWidgetState extends State<MainWidget> {
                                             backgroundColor: Color(0x559CBAB7),
                                             center: Text(
                                               '70%',
-                                              style: LoveAppTheme.montserratLightTheme.textTheme.bodyMedium,
+                                              style: LoveAppTheme.montserratLightTheme.textTheme.labelSmall,
                                             ),
                                             barRadius: Radius.circular(12),
                                             padding: EdgeInsets.zero,
@@ -190,11 +233,11 @@ class _MainWidgetState extends State<MainWidget> {
                                             children: [
                                               Text(
                                                 '0 дней',
-                                                style: LoveAppTheme.miratrixLightTheme.textTheme.bodyMedium,
+                                                style: LoveAppTheme.miratrixLightTheme.textTheme.labelSmall,
                                               ),
                                               Text(
                                                 '50 дней',
-                                                style: LoveAppTheme.miratrixLightTheme.textTheme.bodyMedium,
+                                                style: LoveAppTheme.miratrixLightTheme.textTheme.labelSmall,
                                               ),
                                             ],
                                           ),
@@ -315,7 +358,7 @@ class _MainWidgetState extends State<MainWidget> {
                         ),
                       ],
                     ),
-                  ),
+                  ).animateOnPageLoad(animationsMap['stackOnPageLoadAnimation']!),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(12, 24, 12, 0),
                     child: Row(
@@ -324,18 +367,18 @@ class _MainWidgetState extends State<MainWidget> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          'Наши серкретики',
-                           style: LoveAppTheme.miratrixLightTheme.textTheme.bodyMedium,
+                          'Наша галлерея',
+                           style: LoveAppTheme.miratrixLightTheme.textTheme.headlineMedium,
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(7, 0, 0, 0),
                           child: Text(
                             '(14)',
-                            style: LoveAppTheme.montserratLightTheme.textTheme.bodyMedium,
+                            style: LoveAppTheme.montserratLightTheme.textTheme.bodySmall,
                           ),
                         ),
                       ],
-                    ),
+                    ).animateOnPageLoad(animationsMap['rowOnPageLoadAnimation']!),
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(12, 17, 12, 0),
@@ -384,7 +427,7 @@ class _MainWidgetState extends State<MainWidget> {
                           ),
                         ),
                       ],
-                    ),
+                    ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
                   ),
                 ],
               ),

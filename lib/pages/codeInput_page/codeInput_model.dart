@@ -1,9 +1,10 @@
 import '/components/primary_button/primary_button_widget.dart';
 import '/components/sub_button/sub_button_widget.dart';
-import 'package:flutterflow_ui/flutterflow_ui.dart';
+
 
 import 'codeInput_widget.dart' show CodeInputWidget;
 import 'package:flutter/material.dart';
+import 'package:flutterflow_ui/flutterflow_ui.dart';
 
 class CodeInputModel extends FlutterFlowModel<CodeInputWidget> {
   ///  State fields for stateful widgets in this page.

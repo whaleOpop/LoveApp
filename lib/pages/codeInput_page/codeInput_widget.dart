@@ -89,14 +89,14 @@ class _CodeInputWidgetState extends State<CodeInputWidget>
                     children: [
                       Text(
                         'Партнер',
-                        style: LoveAppTheme.miratrixLightTheme.textTheme.bodyMedium,
+                        style: LoveAppTheme.miratrixLightTheme.textTheme.headlineLarge,
                       ),
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(70, 0, 70, 26),
                         child: Text(
                           'Укажи код твоей второй половинки',
                           textAlign: TextAlign.center,
-                          style: LoveAppTheme.montserratLightTheme.textTheme.bodyMedium,
+                          style: LoveAppTheme.montserratLightTheme.textTheme.bodySmall,
                         ),
                       ),
                       Padding(
@@ -106,7 +106,7 @@ class _CodeInputWidgetState extends State<CodeInputWidget>
                           autoDisposeControllers: false,
                           appContext: context,
                           length: 5,
-                          textStyle: LoveAppTheme.miratrixLightTheme.textTheme.bodyMedium,
+                          textStyle: LoveAppTheme.miratrixLightTheme.textTheme.titleMedium,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           enableActiveFill: false,
                           autoFocus: true,

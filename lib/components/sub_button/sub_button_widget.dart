@@ -53,7 +53,7 @@ class _SubButtonWidgetState extends State<SubButtonWidget> {
           padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
           iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
           color: Colors.transparent,
-          textStyle: LoveAppTheme.montserratLightTheme.textTheme.titleSmall,
+          textStyle: LoveAppTheme.montserratLightTheme.textTheme.bodySmall,
           elevation: 0,
           borderRadius: BorderRadius.circular(8),
         ),

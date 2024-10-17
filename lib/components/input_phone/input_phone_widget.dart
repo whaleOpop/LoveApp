@@ -51,7 +51,7 @@ class _InputPhoneWidgetState extends State<InputPhoneWidget> {
           decoration: InputDecoration(
             isDense: true,
             hintText: 'Телефон',
-            hintStyle: LoveAppTheme.montserratLightTheme.textTheme.titleSmall,
+            hintStyle: LoveAppTheme.montserratLightTheme.textTheme.bodyMedium,
             enabledBorder: UnderlineInputBorder(
               borderSide: const BorderSide(
                 color: Colors.white,
@@ -82,7 +82,7 @@ class _InputPhoneWidgetState extends State<InputPhoneWidget> {
             ),
             contentPadding: const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 16),
           ),
-          style: LoveAppTheme.montserratLightTheme.textTheme.titleSmall,
+          style: LoveAppTheme.montserratLightTheme.textTheme.bodyMedium,
           keyboardType: TextInputType.number,
           cursorColor: Colors.white,
           validator: _model.textControllerValidator.asValidator(context),

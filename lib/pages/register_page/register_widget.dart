@@ -141,7 +141,7 @@ class _RegisterWidgetState extends State<RegisterWidget>
                                   child: Text(
                                     'Приветствуем!',
                                     style: LoveAppTheme.miratrixLightTheme
-                                        .textTheme.bodyMedium,
+                                        .textTheme.headlineLarge,
                                   ),
                                 ),
                                 Padding(
@@ -151,7 +151,7 @@ class _RegisterWidgetState extends State<RegisterWidget>
                                       'Больше, чем просто пара — это ваши общие воспоминания',
                                       textAlign: TextAlign.center,
                                       style: LoveAppTheme.montserratLightTheme
-                                          .textTheme.bodyMedium),
+                                          .textTheme.bodySmall),
                                 ),
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(

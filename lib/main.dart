@@ -8,6 +8,7 @@ import 'package:loveapp/pages/login_page/login_widget.dart';
 import 'package:loveapp/pages/codeInput_page/codeInput_widget.dart';
 import 'package:loveapp/pages/partner_page/partner_widget.dart';
 import 'package:loveapp/pages/main_page/main_page_widget.dart';
+import 'package:loveapp/pages/date_page/date_page_widget.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
           '/codeInput': (context) => const CodeInputWidget(),
           '/partner': (context) => const PartnerWidget(),
           '/main': (context) => const MainWidget(),
+          '/datePicker': (context) => const PickDataWidget(),
         },
         debugShowCheckedModeBanner: false,
         theme: LoveAppTheme.miratrixLightTheme,

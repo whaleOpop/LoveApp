@@ -51,7 +51,7 @@ class _InputPasswordWidgetState extends State<InputPasswordWidget> {
           decoration: InputDecoration(
             isDense: true,
             hintText: 'Пароль',
-            hintStyle: LoveAppTheme.montserratLightTheme.textTheme.titleSmall,
+            hintStyle: LoveAppTheme.montserratLightTheme.textTheme.bodyMedium,
             enabledBorder: UnderlineInputBorder(
               borderSide: const BorderSide(
                 color: Colors.white,
@@ -82,8 +82,7 @@ class _InputPasswordWidgetState extends State<InputPasswordWidget> {
             ),
             contentPadding: const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 16),
           ),
-          style: LoveAppTheme.montserratLightTheme
-                                          .textTheme.bodyMedium,
+          style: LoveAppTheme.montserratLightTheme.textTheme.bodyMedium,
           keyboardType: TextInputType.visiblePassword,
           cursorColor: Colors.white,
           validator: _model.textControllerValidator.asValidator(context),

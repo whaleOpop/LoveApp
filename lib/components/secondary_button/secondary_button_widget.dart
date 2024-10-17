@@ -60,7 +60,7 @@ class _SecondaryButtonWidgetState extends State<SecondaryButtonWidget> {
           padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
           iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
           color: Colors.transparent,
-          textStyle: LoveAppTheme.miratrixLightTheme.textTheme.titleMedium,
+          textStyle: LoveAppTheme.miratrixLightTheme.textTheme.labelMedium,
           elevation: 0,
           borderRadius: BorderRadius.circular(15),
         ),

@@ -168,7 +168,7 @@ class _PartnerWidgetState extends State<PartnerWidget> {
                         padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                         child: Text(
                           'Кирилл',
-                          style: LoveAppTheme.miratrixLightTheme.textTheme.bodyMedium,
+                          style: LoveAppTheme.miratrixLightTheme.textTheme.headlineLarge,
                         ),
                       ),
                       Padding(
@@ -176,7 +176,7 @@ class _PartnerWidgetState extends State<PartnerWidget> {
                         child: Text(
                           'Ваш партнер?',
                           textAlign: TextAlign.center,
-                          style: LoveAppTheme.montserratLightTheme.textTheme.bodyMedium
+                          style: LoveAppTheme.montserratLightTheme.textTheme.bodySmall
                         ),
                       ),
                       
