@@ -54,6 +54,7 @@ jobs:
             HOST: ${{ secrets.HOST }}
           run: |
             ssh root@${{ secrets.HOST }}
+            ${{secrets.SSH_PASSWORD}}
         - name: Stop docker container
           run: | 
               docker stop docker-db
