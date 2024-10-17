@@ -53,9 +53,14 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
 
-      - name: Create deployment user and set permissions
+      - name: Add SSH key to ssh-agent
         run: |
-          ssh -i ~/.ssh/id_rsa root@${{ secrets.SSH_HOST }} << 'EOF'
+          eval $(ssh-agent -s)
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | ssh-add -
+
+      - name: Execute remote commands
+        run: |
+          ssh -tt -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@${{ secrets.SSH_HOST }} << 'EOF'
           if ! id -u deploy_user &>/dev/null; then
             useradd -m deploy_user
             echo "deploy_user:password" | chpasswd
@@ -63,18 +68,17 @@ jobs:
           fi
           EOF
 
-      - name: Deploy to Host
-        env:
-          HOST: ${{ secrets.SSH_HOST }}
+      - name: Stop and delete existing Docker container
         run: |
-          ssh -t -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@${{ secrets.SSH_HOST }} << 'EOF'
-          
-          # Stop existing container if it exists
+          ssh -tt -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@${{ secrets.SSH_HOST }} << 'EOF'
           if docker ps -a --format '{{.Names}}' | grep -Eq '^docker-db$'; then
             docker stop docker-db && docker rm docker-db
           fi
+          EOF
 
-          # Pull and run new container
+      - name: Pull and deploy new Docker container
+        run: |
+          ssh -tt -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@${{ secrets.SSH_HOST }} << 'EOF'
           docker pull $REGISTRY/${{ github.repository }}:docker-db
           docker run -d --name docker-db -p 8080:8000 $REGISTRY/${{ github.repository }}:docker-db
           EOF
