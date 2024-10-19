@@ -1,3 +1,5 @@
+
+
 import '/components/primary_button/primary_button_widget.dart';
 import '/components/secondary_button/secondary_button_widget.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
@@ -11,7 +13,7 @@ import '/theme/love_app_theme.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
-import 'package:model_viewer_plus/model_viewer_plus.dart';
+import 'package:flutter_3d_controller/flutter_3d_controller.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({super.key});
@@ -81,20 +83,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         child: Stack(
                           children: [
                               const SizedBox(
-                                width: double.infinity,
-                                height: 800, // Adjust as needed
-                                child: ModelViewer(
-                                  backgroundColor: Colors.transparent,
-                                  src: 'assets/3dmodels/test.glb',
-                                  alt: 'A test 3D model',
-                                  ar: false,
-                                  autoRotate: true,
-                                  disableZoom: false,
-                                  autoPlay: true,
-                                  cameraControls: false,
-                                  disableTap: true,
-                                ),
+                              width: 400,
+                              height: 400,
+                              child: Flutter3DViewer(
+                                activeGestureInterceptor: true,
+                                enableTouch: true,
+                                src: 'assets/3dmodels/test.glb', // 3D model with different animations
                               ),
+                            ),
+
                             Align(
                               alignment: const AlignmentDirectional(0, 0),
                               child: Padding(
