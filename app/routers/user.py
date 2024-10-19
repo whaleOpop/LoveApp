@@ -6,8 +6,8 @@ from app.database import get_db
 router = APIRouter()
 
 
-@router.post("/register", response_model=schemas.UserRegister)
-def create_user(user: schemas.UserRegister, db: Session = Depends(get_db)):
+@router.post("/register", response_model=schemas.UserResponse)
+def create_user(user: schemas.UserResponse, db: Session = Depends(get_db)):
     existing_user = db.query(user).filter(user.phone == user.phone).first()
 
     if existing_user:
