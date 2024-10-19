@@ -7,6 +7,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  model_viewer_plus: ^1.5.0
+
   status_bar_control: ^3.2.1
   flutterflow_ui: ^0.3.1
   auto_size_text: 3.0.0

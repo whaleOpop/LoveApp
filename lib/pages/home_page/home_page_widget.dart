@@ -11,6 +11,8 @@ import '/theme/love_app_theme.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
+import 'package:model_viewer_plus/model_viewer_plus.dart';
+
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({super.key});
 
@@ -70,23 +72,29 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   child: Container(
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height,
-                    color:
-                        LoveAppTheme.miratrixLightTheme.scaffoldBackgroundColor,
+                    color: Colors.black,
                     child: Align(
                       alignment: const AlignmentDirectional(0, 0),
-                      child: SizedBox(
+                      child: SizedBox(  
                         width: double.infinity,
                         height: double.infinity,
                         child: Stack(
                           children: [
-                            ClipRRect(
-                              child: Image.asset(
-                                'assets/images/backgroundHelloPage.jpg',
+                              const SizedBox(
                                 width: double.infinity,
-                                height: double.infinity,
-                                fit: BoxFit.cover,
+                                height: 800, // Adjust as needed
+                                child: ModelViewer(
+                                  backgroundColor: Colors.transparent,
+                                  src: 'assets/3dmodels/test.glb',
+                                  alt: 'A test 3D model',
+                                  ar: false,
+                                  autoRotate: true,
+                                  disableZoom: false,
+                                  autoPlay: true,
+                                  cameraControls: false,
+                                  disableTap: true,
+                                ),
                               ),
-                            ),
                             Align(
                               alignment: const AlignmentDirectional(0, 0),
                               child: Padding(
