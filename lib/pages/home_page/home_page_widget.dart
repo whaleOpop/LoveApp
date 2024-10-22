@@ -4,7 +4,7 @@ import '/components/primary_button/primary_button_widget.dart';
 import '/components/secondary_button/secondary_button_widget.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 import 'package:flutter/services.dart';
-
+import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_animate/flutter_animate.dart';
@@ -59,22 +59,35 @@ class _HomePageWidgetState extends State<HomePageWidget>
     super.dispose();
   }
 
+  
+  
+
   @override
   Widget build(BuildContext context) {
+
+    Flutter3DController controller = Flutter3DController();
+    controller.onModelLoaded.addListener(() {
+      debugPrint('model is loaded : ${controller.onModelLoaded.value}');
+      controller.resetCameraOrbit();
+      controller.setCameraOrbit(-20, 120, 360);
+    });
+
     return MediaQuery.removePadding(
         context: context,
-        removeTop: true, // Remove only the top padding
+        removeTop: true,
         child: ListView(
             padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
             children: [
               GestureDetector(
-                onTap: () => FocusScope.of(context).unfocus(),
+                onPanEnd: (_) {
+                  controller.setCameraOrbit(-20, 120, 360);
+                },
                 child: WillPopScope(
                   onWillPop: () async => false,
                   child: Container(
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height,
-                    color: Colors.black,
+                    color: const Color.fromARGB(255, 16, 14, 21),
                     child: Align(
                       alignment: const AlignmentDirectional(0, 0),
                       child: SizedBox(  
@@ -82,15 +95,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         height: double.infinity,
                         child: Stack(
                           children: [
-                              const SizedBox(
-                              width: 400,
-                              height: 400,
-                              child: Flutter3DViewer(
-                                activeGestureInterceptor: true,
-                                enableTouch: true,
-                                src: 'assets/3dmodels/test.glb', // 3D model with different animations
+                              SizedBox(
+                                width: 400,
+                                height: 400,
+                                child: Flutter3DViewer(
+                                  activeGestureInterceptor: true,
+                                  enableTouch: true,
+                                  controller: controller,
+                                  src: 'assets/3dmodels/test.glb',
+                                ),
                               ),
-                            ),
 
                             Align(
                               alignment: const AlignmentDirectional(0, 0),
