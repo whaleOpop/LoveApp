@@ -3,17 +3,32 @@ from sqlalchemy.orm import Session
 from app import crud, schemas
 from app.database import get_db
 from app import models
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 router = APIRouter()
 
 
 @router.post("/register", response_model=schemas.UserResponse)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
-    existing_user = db.query(models.User).filter(models.User.phone == user.phone).first()
-    if existing_user:
-        raise HTTPException(
-            status_code=400, detail="Номер уже зарегистрирован")
-    db_user = crud.create_user(db, user)
-    return db_user
+    try:
+        existing_user = db.query(models.User).filter(models.User.phone == user.phone).first()
+
+        if existing_user:
+            raise HTTPException(
+                status_code=400, detail="Номер уже зарегистрирован")
+
+
+        logger.info(f"Creating user: {user}")
+
+        db_user = crud.create_user(db, user)
+        return db_user
+    except Exception as e:
+        logger.error(f"Error during user registration: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
 
 
 @router.post("/login")
