@@ -33,7 +33,10 @@ def delete_session(db: Session, sessionid: str):
         db.commit()
 
 def get_user_by_session(db: Session, sessionid: str):
-    return db.query(User).filter(User.sessionid == sessionid).first()
+    user = db.query(User).filter(User.sessionid == sessionid).first()
+    print(f"Session ID: {sessionid}, User Found: {user}") 
+    return user
+
 
 def authenticate_user(db: Session, phone: str, password: str):
     user = get_user_by_phone(db, phone)
