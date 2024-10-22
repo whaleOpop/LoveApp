@@ -25,14 +25,14 @@ class UserCreate(BaseModel):
 
 
 class UserResponse(BaseModel):
-    id: str
-    name: str
-    phone: str
+    id: Optional[str]
+    name: Optional[str]
+    phone: Optional[str]
     age: Optional[int]
     zodiac: Optional[str]
     city: Optional[str]
     uuid: Optional[str]
-    sessionid: str
+    sessionid: Optional[str]
     class Config:
         orm_mode = True
 
