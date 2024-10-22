@@ -26,6 +26,15 @@ def create_user(db: Session, user_data):
     db.refresh(db_user)
     return db_user
 
+def delete_session(db: Session, sessionid: str):
+    user = get_user_by_session(db, sessionid)
+    if user:
+        user.sessionid = None
+        db.commit()
+
+def get_user_by_session(db: Session, sessionid: str):
+    return db.query(User).filter(User.sessionid == sessionid).first()
+
 def authenticate_user(db: Session, phone: str, password: str):
     user = get_user_by_phone(db, phone)
     if user and verify_password(password, user.password):
