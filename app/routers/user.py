@@ -1,8 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Header
 from sqlalchemy.orm import Session
 from app.schemas import UserCreate, UserAuth, UserOut
 from app.crud import create_user, authenticate_user, get_user_by_session, delete_session,get_user_by_phone
 from app.database import get_db
+
 
 router = APIRouter()
 
@@ -29,8 +30,9 @@ def logout(sessionid: str, db: Session = Depends(get_db)):
     delete_session(db, sessionid)
     return {"msg": "Successfully logged out"}
 
+
 @router.get("/me", response_model=UserOut)
-def get_me(sessionid: str, db: Session = Depends(get_db)):
+def get_me(sessionid: str = Header(...), db: Session = Depends(get_db)):
     user = get_user_by_session(db, sessionid)
     if not user:
         raise HTTPException(status_code=401, detail="Invalid session")
