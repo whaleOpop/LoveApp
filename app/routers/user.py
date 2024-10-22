@@ -2,20 +2,18 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app import crud, schemas
 from app.database import get_db
-
+from app import models
 router = APIRouter()
 
 
 @router.post("/register", response_model=schemas.UserResponse)
-def create_user(user: schemas.UserResponse, db: Session = Depends(get_db)):
-    existing_user = db.query(user).filter(user.phone == user.phone).first()
-
+def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    existing_user = db.query(models.User).filter(models.User.phone == user.phone).first()
     if existing_user:
         raise HTTPException(
             status_code=400, detail="Номер уже зарегистрирован")
-    
     db_user = crud.create_user(db, user)
-    return {"detail": "Login successful", "session_token": db_user.sessionid}
+    return db_user
 
 
 @router.post("/login")
