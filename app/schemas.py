@@ -3,38 +3,24 @@ from typing import Optional
 from datetime import datetime
 
 
-class UserLogin(BaseModel):
-    phone: str
-    password: str
-
-
-class UserRegister(BaseModel):
+class UserBase(BaseModel):
     name: str
     phone: str
-    password: str
-
-
-class UserCreate(BaseModel):
-    name: str
-    phone: str
-    password: str
-    age: int
-    zodiac: str
-    city: str
-    uuid: str
-
-
-class UserResponse(BaseModel):
-    id: Optional[str]
-    name: Optional[str]
-    phone: Optional[str]
     age: Optional[int]
     zodiac: Optional[str]
     city: Optional[str]
-    uuid: Optional[str]
-    sessionid: Optional[str]
-    class Config:
-        orm_mode = True
+
+class UserCreate(UserBase):
+    password: str
+
+class UserOut(UserBase):
+    id: str
+    sessionid: str
+
+class UserAuth(BaseModel):
+    phone: str
+    password: str
+
 
 
 class GalleryCreate(BaseModel):
