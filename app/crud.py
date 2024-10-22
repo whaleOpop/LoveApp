@@ -1,58 +1,39 @@
 from sqlalchemy.orm import Session
 from app.models import User, Gallery, Photo, Couple
-from fastapi import HTTPException
-from app.schemas import UserCreate, GalleryCreate, PhotoCreate, CoupleCreate
 from uuid import uuid4
 import bcrypt
 
-
 def hash_password(password: str) -> str:
     salt = bcrypt.gensalt()
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
-    return hashed_password.decode('utf-8')
-
+    return bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
 
+def get_user_by_phone(db: Session, phone: str):
+    return db.query(User).filter(User.phone == phone).first()
 
-def create_user(db: Session, user: UserCreate):
-    hashed_password = hash_password(user.password)
-    db_user = User(id=str(uuid4()), **user.dict(
-        exclude={"password"}), password=hashed_password, sessionid=str(uuid4()))
+def create_user(db: Session, user_data):
+    user_id = str(uuid4())
+    session_id = str(uuid4())
+
+    hashed_password = hash_password(user_data['password'])
+    user_data['password'] = hashed_password
+
+    db_user = User(id=user_id, sessionid=session_id, **user_data)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
     return db_user
 
+def authenticate_user(db: Session, phone: str, password: str):
+    user = get_user_by_phone(db, phone)
+    if user and verify_password(password, user.password):
+        user.sessionid = str(uuid4()) 
+        db.commit()
+        return user
+    return None
 
-def update_user_token(db: Session, sessionid: str):
-    db_user = get_user_by_session_id(db, sessionid)
-    db_user.sessionid = str(uuid4())
-    db.commit()
-    db.refresh(db_user)
-    return {"session_token": db_user.sessionid}
-
-
-def get_user_by_session_id(db: Session, sessionid: str):
-    return db.query(User).filter(User.sessionid == sessionid).first()
-
-
-def get_user_by_phone(db: Session, phone: str):
-    return db.query(User).filter(User.phone == phone).first()
-
-
-def get_user(db: Session, user_id: str):
-    return db.query(User).filter(User.id == user_id).first()
-
-
-def delete_user(db: Session, user_id: str):
-    db_user = db.query(User).filter(User.id == user_id).first()
-    if db_user is None:
-        raise HTTPException(status_code=404, detail="User is not found")
-    db.delete(db_user)
-    db.commit()
-    return {"details": "User successfully deleted"}
 
 
 def create_photo(db: Session, photo: PhotoCreate):
