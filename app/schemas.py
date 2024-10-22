@@ -14,7 +14,6 @@ class UserCreate(UserBase):
     password: str
 
 class UserOut(UserBase):
-    id: str
     sessionid: str
 
 class UserAuth(BaseModel):
