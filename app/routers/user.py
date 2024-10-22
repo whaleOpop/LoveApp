@@ -14,13 +14,16 @@ router = APIRouter()
 @router.post("/register", response_model=schemas.UserResponse)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     try:
-        existing_user = db.query(models.User).filter(models.User.phone == user.phone).first()
+
+        logger.info(f"Checking for existing user with phone: {user.phone}")
+
+        existing_user = db.query(models.User).filter(
+            models.User.phone == user.phone).first()
 
         if existing_user:
+            logger.warning(f"User with phone {user.phone} already exists.")
             raise HTTPException(
                 status_code=400, detail="Номер уже зарегистрирован")
-
-
         logger.info(f"Creating user: {user}")
 
         db_user = crud.create_user(db, user)
@@ -28,7 +31,6 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     except Exception as e:
         logger.error(f"Error during user registration: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
-
 
 
 @router.post("/login")
@@ -48,7 +50,7 @@ def read_user(session_id: str, db: Session = Depends(get_db)):
 
     if db_user is None:
         raise HTTPException(status_code=404, detail="User not found")
-    
+
     db_user = crud.update_user_token(db, session_id)
     return db_user
 
