@@ -82,6 +82,6 @@ jobs:
       - name: Pull and deploy new Docker container
         run: |
           sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} << 'EOF'
-          docker pull ${{ env.IMAGE_NAME }}
+          docker pull ${{ env.IMAGE_NAME }}:docker-db
           docker run -d --name docker-db -p 8080:8000 ${{ env.IMAGE_NAME }}:docker-db
           EOF
