@@ -16,7 +16,9 @@ class UserCreate(UserBase):
 class UserOut(UserBase):
     id: str
     sessionid: str
-
+    class Config:
+        orm_mode = True
+        
 class UserAuth(BaseModel):
     phone: str
     password: str
