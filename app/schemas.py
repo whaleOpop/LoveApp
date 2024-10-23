@@ -10,19 +10,31 @@ class UserBase(BaseModel):
     zodiac: Optional[str]
     city: Optional[str]
 
+    class Config:
+        orm_mode = True
+
+
 class UserCreate(UserBase):
     password: str
+
+    class Config:
+        orm_mode = True
+
 
 class UserOut(UserBase):
     id: str
     sessionid: str
+
     class Config:
         orm_mode = True
-        
+
+
 class UserAuth(BaseModel):
     phone: str
     password: str
 
+    class Config:
+        orm_mode = True
 
 
 class GalleryCreate(BaseModel):
