@@ -64,12 +64,35 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
   @override
   Widget build(BuildContext context) {
-
     Flutter3DController controller = Flutter3DController();
+
+    void rotateToAngle(controller, {double targetAngle = 1490, double startSpeed = 32.0}) {
+      double currentAngle = 0;
+      double speed = startSpeed;
+
+      Timer.periodic(Duration(milliseconds: 16), (timer) {
+
+        speed = speed * 0.98; // Скорость уменьшается на 2% в каждом цикле
+        if (speed < 0.1) speed = 0.1; // Минимальная скорость
+
+        currentAngle += speed;
+
+
+        if (currentAngle >= targetAngle) {
+          currentAngle = targetAngle;
+          timer.cancel();
+        }
+
+        controller.setCameraOrbit(currentAngle, 120, 360);
+      });
+    }
+
     controller.onModelLoaded.addListener(() {
       debugPrint('model is loaded : ${controller.onModelLoaded.value}');
       controller.resetCameraOrbit();
-      controller.setCameraOrbit(-20, 120, 360);
+
+      controller.playAnimation();
+      rotateToAngle(controller);
     });
 
     return MediaQuery.removePadding(
@@ -80,7 +103,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
             children: [
               GestureDetector(
                 onPanEnd: (_) {
-                  controller.setCameraOrbit(-20, 120, 360);
+                  controller.setCameraOrbit(50, 120, 360);
                 },
                 child: WillPopScope(
                   onWillPop: () async => false,
@@ -95,16 +118,24 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         height: double.infinity,
                         child: Stack(
                           children: [
-                              SizedBox(
-                                width: 400,
-                                height: 400,
-                                child: Flutter3DViewer(
-                                  activeGestureInterceptor: true,
-                                  enableTouch: true,
-                                  controller: controller,
-                                  src: 'assets/3dmodels/test.glb',
-                                ),
+                            ClipRRect(
+                              child: Image.asset(
+                                'assets/images/backgroundEmpty.jpg',
+                                width: double.infinity,
+                                height: double.infinity,
+                                fit: BoxFit.cover,
                               ),
+                            ),
+                            SizedBox(
+                              width: 500,
+                              height: 500,
+                              child: Flutter3DViewer(
+                                activeGestureInterceptor: true,
+                                enableTouch: true,
+                                controller: controller,
+                                src: 'assets/3dmodels/test.glb',
+                              ),
+                            ),
 
                             Align(
                               alignment: const AlignmentDirectional(0, 0),
