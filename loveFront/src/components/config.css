@@ -1,0 +1,53 @@
+/* :root {
+    --main-accent: #5367AD;
+    --secondary-accent: #B5B7CB;
+    --background-color: #f7f7f9;
+  
+    --colors-white: #f7f7f9;
+    --colors-red: #F67070;
+    --colors-orange: #fd5200;
+    --colors-green: #169873;
+    --colors-black: #111112;
+    --colors-gray: #EBEDF4;
+    --colors-gray-dark: #E1E3ED;
+} */
+
+@font-face { font-family: Miratrix; src: url('../assets/fonts/miratrix-normal.otf'); }
+@font-face { font-family: Montserrat; src: url('../assets/fonts/Montserrat-Regular.ttf'); }
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+*{
+    transition: width .3s cubic-bezier(0.560, 1.555, 0.305, 0.940);
+}
+
+h1{
+    color: white;
+    font-family: "Miratrix";
+    font-size: 36px;
+    margin: 0;
+}
+
+h2{
+    color: white;
+    font-family: "Miratrix";
+    font-size: 24px;
+    margin: 0;
+}
+
+h3{
+    color: white;
+    font-family: "Miratrix";
+    font-size: 20px;
+    margin: 0;
+}
+
+p{
+    color: #C0B6C8;
+    font-family: "Montserrat";
+    font-size: 12px;
+    margin: 0;
+}
