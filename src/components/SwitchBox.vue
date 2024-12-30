@@ -54,7 +54,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    transition: left .3s cubic-bezier(0.560, 1.555, 0.305, 0.940);
   }
   .switch-disabled{
     position: absolute;
@@ -67,6 +67,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: left .3s cubic-bezier(0.560, 1.555, 0.305, 0.940);
   }
   
   </style>
@@ -88,6 +89,7 @@
     },
     methods: {
       toggle(){
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
         if (this.type == 1) {
           this.isVolume = !this.isVolume
         } else if(this.type == 2) {

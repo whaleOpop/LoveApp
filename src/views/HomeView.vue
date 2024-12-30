@@ -6,7 +6,7 @@
   </div> -->
 
   <div class="homepage">
-    <div class="settings">
+    <!-- <div class="settings">
       <div class="icon-button" @click="this.$router.push('/settings')">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M9.72933 13.5C8.80107 13.5 7.91084 13.1313 7.25446 12.4749C6.59808 11.8185 6.22933 10.9283 6.22933 10C6.22933 9.07174 6.59808 8.1815 7.25446 7.52513C7.91084 6.86875 8.80107 6.5 9.72933 6.5C10.6576 6.5 11.5478 6.86875 12.2042 7.52513C12.8606 8.1815 13.2293 9.07174 13.2293 10C13.2293 10.9283 12.8606 11.8185 12.2042 12.4749C11.5478 13.1313 10.6576 13.5 9.72933 13.5ZM17.1593 10.97C17.1993 10.65 17.2293 10.33 17.2293 10C17.2293 9.67 17.1993 9.34 17.1593 9L19.2693 7.37C19.4593 7.22 19.5093 6.95 19.3893 6.73L17.3893 3.27C17.2693 3.05 16.9993 2.96 16.7793 3.05L14.2893 4.05C13.7693 3.66 13.2293 3.32 12.5993 3.07L12.2293 0.42C12.1893 0.18 11.9793 0 11.7293 0H7.72933C7.47933 0 7.26933 0.18 7.22933 0.42L6.85933 3.07C6.22933 3.32 5.68933 3.66 5.16933 4.05L2.67933 3.05C2.45933 2.96 2.18933 3.05 2.06933 3.27L0.0693316 6.73C-0.0606684 6.95 -0.000668302 7.22 0.189332 7.37L2.29933 9C2.25933 9.34 2.22933 9.67 2.22933 10C2.22933 10.33 2.25933 10.65 2.29933 10.97L0.189332 12.63C-0.000668302 12.78 -0.0606684 13.05 0.0693316 13.27L2.06933 16.73C2.18933 16.95 2.45933 17.03 2.67933 16.95L5.16933 15.94C5.68933 16.34 6.22933 16.68 6.85933 16.93L7.22933 19.58C7.26933 19.82 7.47933 20 7.72933 20H11.7293C11.9793 20 12.1893 19.82 12.2293 19.58L12.5993 16.93C13.2293 16.67 13.7693 16.34 14.2893 15.94L16.7793 16.95C16.9993 17.03 17.2693 16.95 17.3893 16.73L19.3893 13.27C19.5093 13.05 19.4593 12.78 19.2693 12.63L17.1593 10.97Z" fill="url(#paint0_linear_154_739)"/>
@@ -20,7 +20,7 @@
           </defs>
         </svg>
       </div>
-    </div>
+    </div> -->
     <div class="couple-wrapper">
       <div class="couple-content">
         <div class="human">
@@ -51,11 +51,18 @@
     </div>
 
     <div class="moments">
-      <h2>Наши секретики</h2>
+      <div class="fake_one"></div>
+      <div class="fake_two"></div>
       <div class="moment-wrapper">
-        <img class="moment-img" src="https://i.pinimg.com/736x/12/98/c8/1298c8752e1d3c551865f42b7ebc5d33.jpg" alt="">
+        <div class="title">
+          <div class="emoji-icon">
+            <img src="../assets/images/icons/Smiling Face With Hearts.png" alt="">
+          </div>
+          <p class="titling">Вспомните ваши лучшие<br>моменты</p>
+        </div>
+        
         <MainButton
-        style="width: 90%; position: absolute; bottom: -10px;"
+        style="margin: 10px; margin-top: 30px;"
         :label="'Посмотреть'"
         @click="setRandom()"
         :type="1"/>
@@ -99,8 +106,8 @@ export default {
 }
 .avatar{
   object-fit: cover;
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   border-radius: 70px;
   background: linear-gradient(90deg, rgba(130,252,245,1) 0%, rgba(196,167,251,1) 34%, rgba(221,167,189,1) 65%, rgba(245,173,115,1) 100%);
   padding: 2px;
@@ -112,8 +119,8 @@ export default {
 }
 
 .homepage{
-  background-image: url('../assets/images/backgrounds/homePage.jpg');
-  background-size: cover;
+  /* background-image: url('../assets/images/backgrounds/homePage.jpg');
+  background-size: cover; */
   padding: 12px;
 }
 .couple-wrapper{
@@ -121,10 +128,10 @@ export default {
   flex-direction: column;
   align-items: center;
   backdrop-filter: blur(20px);
-  height: 254px;
+  padding-bottom: 15px;
   border: 1px solid #433E45;
   border-radius: 20px;
-  margin-top: 100px;
+  margin-top: 70px;
 }
 .stats{
   display: flex;
@@ -178,25 +185,18 @@ export default {
   align-items: center;
   flex-direction: column;
   margin-bottom: 70px;
+  margin-top: 50px;
+  position: relative;
 }
 
 .moment-wrapper{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-}
-.moments h2{
-  align-self: start;
-  margin: 20px 0;
+  width: 100%;
+  background-color: #413149;
+  border-radius: 20px;
+  z-index: 3;
+  
 }
 
-.moment-img{
-  width: 80%;
-  height: 254px;
-  border: 1px solid #433E45;
-  border-radius: 20px;
-}
 
 .icon-button{
   height: 54px;
@@ -214,5 +214,51 @@ export default {
   display: flex;
   justify-content: end;
   margin-bottom: 75px;
+}
+
+.title{
+  margin: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: start;
+}
+.emoji-icon{
+  height: 48px;
+  width: 48px;
+  background-color: #1F1723;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emoji-icon img{
+  height: 25px;
+}
+.titling{
+  font-size: 16px;
+  font-family: 'Miratrix';
+  color: white;
+}
+
+.fake_one{
+  width: 85%;
+  height: 30px;
+  border-radius: 20px 20px 0 0;
+  background-color: #1F1723;
+  position: absolute;
+  z-index: 1;
+  top: -24px;
+}
+
+.fake_two{
+  width: 94%;
+  height: 30px;
+  border-radius: 20px 20px 0 0;
+  background-color: #2F2335;
+  position: absolute;
+  z-index: 2;
+  top: -12px;
 }
 </style>

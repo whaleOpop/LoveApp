@@ -1,6 +1,6 @@
 <template>
     <div class="gallerypage">
-        <div class="back">
+        <!-- <div class="back">
             <div class="icon-button" @click="this.$router.push('/')">
                 <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18 5H3.83L7.41 1.41L6 0L0 6L6 12L7.41 10.58L3.83 7H18V5Z" fill="url(#paint0_linear_154_816)"/>
@@ -14,7 +14,7 @@
                     </defs>
                 </svg>
             </div>
-        </div>
+        </div> -->
         <div class="moments">
             <div v-for="el in moments" :key="el.id">
                 <MomentBox :data="el"/>
