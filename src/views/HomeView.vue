@@ -23,11 +23,11 @@
     </div> -->
     <div class="couple-wrapper">
       <div class="couple-content">
-        <div class="human">
+        <div class="human" @click="this.$router.push('/profile')">
           <img src="https://steamuserimages-a.akamaihd.net/ugc/2261431463909221004/CF7290FDC05473039DA56E6D03A5FB6A48DA39EA/?imw=512&imh=425&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="" class="avatar">
           <p class="name">Никита</p>
         </div>
-        <div class="human">
+        <div class="human" @click="this.$router.push('/profile')">
           <img src="https://avatars.mds.yandex.net/i?id=6cfafaebf9b0ae27ee16a3c44a0798f52d430a4a-11476564-images-thumbs&n=13" alt="" class="avatar">
           <p class="name">Катюха</p>
         </div>
@@ -55,7 +55,7 @@
       <div class="fake_two"></div>
       <div class="moment-wrapper">
         <div class="title">
-          <div class="emoji-icon">
+          <div class="emoji-icon" @click="this.$router.push('/codeInput')">
             <img src="../assets/images/icons/Smiling Face With Hearts.png" alt="">
           </div>
           <p class="titling">Вспомните ваши лучшие<br>моменты</p>

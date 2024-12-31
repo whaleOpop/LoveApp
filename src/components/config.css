@@ -53,6 +53,13 @@ h3{
     margin: 0;
 }
 
+h6{
+    color: white;
+    font-family: "Miratrix";
+    font-size: 16px;
+    margin: 0;
+}
+
 p{
     color: #C0B6C8;
     font-family: "Montserrat";

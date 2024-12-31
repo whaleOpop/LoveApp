@@ -6,6 +6,7 @@ import GalleryView from '../views/GalleryView.vue'
 import NewMomentView from '../views/NewMomentView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import WhereView from '../views/WhereToGoView.vue'
+import CodeInput from '../views/CodeInputView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +40,11 @@ const router = createRouter({
       path: '/where',
       name: 'where',
       component: WhereView,
+    },
+    {
+      path: '/codeInput',
+      name: 'codeInput',
+      component: CodeInput,
     },
   ],
 })

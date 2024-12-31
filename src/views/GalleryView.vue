@@ -15,8 +15,8 @@
                 </svg>
             </div>
         </div> -->
-        <div class="moments">
-            <div v-for="el in moments" :key="el.id">
+        <div class="moments" ref="moments" @scroll="handleScroll">
+            <div v-for="el in moments" :key="el.id" class="momentCard">
                 <MomentBox :data="el"/>
             </div>
         </div>
@@ -34,7 +34,6 @@
             
             <div class="viniete"></div>
         </div>
-        
     </div>
 </template>
 
@@ -44,12 +43,6 @@ export default {
         return{
             isScrolledDown: false,
             moments:[
-            {
-                    id: 1,
-                    date: '28 августа, 2024',
-                    name: 'Сходили в парк',
-                    location: 'Moscow city centre'
-                },
                 {
                     id: 1,
                     date: '28 августа, 2024',
@@ -57,25 +50,31 @@ export default {
                     location: 'Moscow city centre'
                 },
                 {
-                    id: 1,
+                    id: 2,
                     date: '28 августа, 2024',
                     name: 'Сходили в парк',
                     location: 'Moscow city centre'
                 },
                 {
-                    id: 1,
+                    id: 3,
                     date: '28 августа, 2024',
                     name: 'Сходили в парк',
                     location: 'Moscow city centre'
                 },
                 {
-                    id: 1,
+                    id: 4,
                     date: '28 августа, 2024',
                     name: 'Сходили в парк',
                     location: 'Moscow city centre'
                 },
                 {
-                    id: 1,
+                    id: 5,
+                    date: '28 августа, 2024',
+                    name: 'Сходили в парк',
+                    location: 'Moscow city centre'
+                },
+                {
+                    id: 6,
                     date: '28 августа, 2024',
                     name: 'Сходили в парк',
                     location: 'Moscow city centre'
@@ -84,21 +83,28 @@ export default {
         }
     },
     mounted() {
-        window.addEventListener('scroll', this.handleScroll);
+        // Инициализация скролла на моменте
     },
     beforeUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
+        // Можно добавить дополнительные очищающие действия если нужно
     },
     methods: {
         handleScroll() {
-            this.isScrolledDown = window.scrollY > 100;
+            const momentsElement = this.$refs.moments;
+            if (momentsElement) {
+                this.isScrolledDown = momentsElement.scrollTop > 100;
+            }
         },
         scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const momentsElement = this.$refs.moments;
+            if (momentsElement) {
+                momentsElement.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         },
     },
 }
 </script>
+
 
 <style scoped>
 .buttons{
@@ -139,7 +145,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
 .icon-button{
@@ -158,8 +163,13 @@ export default {
   display: flex;
   justify-content: start;
   gap: 26px;
-  margin-top: 26px;
   width: 100%;
   flex-direction: column;
+  overflow-y: scroll;
+  height: 80vh;
 }
+.momentCard:last-child {
+    margin-bottom: 100px;
+}
+
 </style>

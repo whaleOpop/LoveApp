@@ -1,10 +1,21 @@
 <template>
   <div>
-    <NavBar/>
+    <NavBar v-if="navShow"/>
     <RouterView />
   </div>
  
 </template>
+
+<script>
+export default {
+  computed: {
+    navShow() {
+      return this.$route.path === '/' || this.$route.path === '/gallery' || this.$route.path === '/where';
+    }
+  }
+}
+</script>
+
 
 <style scoped>
 div{
