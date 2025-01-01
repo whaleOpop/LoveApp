@@ -21,7 +21,7 @@
         </svg>
       </div>
     </div> -->
-    <div class="couple-wrapper">
+    <div class="couple-wrapper" ref="block_first">
       <div class="couple-content">
         <div class="human" @click="this.$router.push('/profile')">
           <img src="https://steamuserimages-a.akamaihd.net/ugc/2261431463909221004/CF7290FDC05473039DA56E6D03A5FB6A48DA39EA/?imw=512&imh=425&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="" class="avatar">
@@ -51,9 +51,9 @@
     </div>
 
     <div class="moments">
-      <div class="fake_one"></div>
-      <div class="fake_two"></div>
-      <div class="moment-wrapper">
+      <div class="fake_one" ref="block_fourth"></div>
+      <div class="fake_two" ref="block_third"></div>
+      <div class="moment-wrapper" ref="block_second">
         <div class="title">
           <div class="emoji-icon" @click="this.$router.push('/codeInput')">
             <img src="../assets/images/icons/Smiling Face With Hearts.png" alt="">
@@ -79,16 +79,46 @@ export default {
       barWidth: '20',
     }
   },
+  async mounted() {
+    this.showComponentsAnimation();
+  },
   methods:{
     setRandom(){
       this.barWidth = Math.floor(Math.random() * 100)
-    }
+    },
+    showComponentsAnimation() {
+      let index = 0;
+      const blocks = [
+          this.$refs.block_first,
+          this.$refs.block_second,
+          this.$refs.block_third,
+          this.$refs.block_fourth,
+      ];
+
+      const interval = setInterval(() => {
+          if (index < blocks.length) {
+          const block = blocks[index];
+          if (block) {
+              block.classList.add('block-show');
+          }
+          index++;
+          } else {
+          clearInterval(interval);
+          }
+      }, 100);
+    },
   }
 }
 </script>
 
 
 <style scoped>
+.block-show{
+    scale: 1 !important;
+    opacity: 1 !important;
+
+    transition: all .2s ease;
+}
 .couple-content{
   display: flex;
   gap: 60px;
@@ -132,6 +162,9 @@ export default {
   border: 1px solid #433E45;
   border-radius: 20px;
   margin-top: 70px;
+
+  scale: 0.5;
+  opacity: 0;
 }
 .stats{
   display: flex;
@@ -195,6 +228,8 @@ export default {
   border-radius: 20px;
   z-index: 3;
   
+  scale: 0.5;
+  opacity: 0;
 }
 
 
@@ -250,6 +285,9 @@ export default {
   position: absolute;
   z-index: 1;
   top: -24px;
+
+  scale: 0.5;
+  opacity: 0;
 }
 
 .fake_two{
@@ -260,5 +298,8 @@ export default {
   position: absolute;
   z-index: 2;
   top: -12px;
+
+  scale: 0.5;
+  opacity: 0;
 }
 </style>
