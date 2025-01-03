@@ -25,6 +25,11 @@
       <div class="couple-content">
         <div class="human" @click="this.$router.push('/profile')">
           <img src="https://steamuserimages-a.akamaihd.net/ugc/2261431463909221004/CF7290FDC05473039DA56E6D03A5FB6A48DA39EA/?imw=512&imh=425&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" alt="" class="avatar">
+          <div class="edit-profile">
+            <svg width="12" height="12" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M47.2201 10.7785C48.26 9.73865 48.26 8.00555 47.2201 7.01903L40.981 0.779892C39.9944 -0.259964 38.2614 -0.259964 37.2215 0.779892L32.3155 5.65921L42.3141 15.6578M0 38.0014V48H9.99861L39.4878 18.4841L29.4892 8.48549L0 38.0014Z" fill="white"/>
+            </svg>
+          </div>
           <p class="name">Никита</p>
         </div>
         <div class="human" @click="this.$router.push('/profile')">
@@ -146,6 +151,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .homepage{
@@ -163,7 +169,7 @@ export default {
   border-radius: 20px;
   margin-top: 70px;
 
-  scale: 0.5;
+  scale: 0.9;
   opacity: 0;
 }
 .stats{
@@ -228,7 +234,7 @@ export default {
   border-radius: 20px;
   z-index: 3;
   
-  scale: 0.5;
+  scale: 0.9;
   opacity: 0;
 }
 
@@ -286,7 +292,7 @@ export default {
   z-index: 1;
   top: -24px;
 
-  scale: 0.5;
+  scale: 0.9;
   opacity: 0;
 }
 
@@ -299,7 +305,22 @@ export default {
   z-index: 2;
   top: -12px;
 
-  scale: 0.5;
+  scale: 0.9;
   opacity: 0;
 }
+
+.edit-profile{
+  height: 26px;
+  width: 26px;
+  border-radius: 13px;
+  position: absolute;
+  bottom: 30px;
+  background-color: #413149;
+  border: 2px solid #5c4667;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 </style>

@@ -19,7 +19,7 @@
 export default {
     methods:{
         clicked(){
-            window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+            window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
         }
     }
 }
@@ -33,6 +33,7 @@ export default {
     height: 3px;
     width: 20px;
     border-radius: 2px 2px 0 0;
+    transition: all .2s ease;
 }
 .underline-dis{
     position: absolute;
@@ -61,6 +62,8 @@ export default {
     font-size: 18px;
     font-family: 'Miratrix';
     color: #ffffff;
+
+    transition: all .2s ease;
 }
 
 .el-dis{

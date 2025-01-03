@@ -37,19 +37,19 @@
             </div>
         </div>
         <div class="user-info">
-            <div class="info-container">
+            <div class="info-container" ref="block_first">
                 <h6>Возраст</h6>
                 <p>19</p>
             </div>
-            <div class="info-container">
+            <div class="info-container" ref="block_second">
                 <h6>Знак зодиака</h6>
                 <p>Скорпион</p>
             </div>
-            <div class="info-container">
+            <div class="info-container" ref="block_third">
                 <h6>Город</h6>
                 <p>Москва</p>
             </div>
-            <div class="info-container">
+            <div class="info-container" ref="block_fourth">
                 <h6>Код для парнера</h6>
                 <p>004965</p>
             </div>
@@ -58,11 +58,13 @@
         
     </div>
     <div class="actions">
+      <div class="editProfile" ref="editBtn">
         <MainButton
-        style="margin: 10px; margin-top: 60px;"
         :label="'Редактировать профиль'"
         @click="console.log('clicked')"
         :type="1"/>
+      </div>
+        
         <MainButton
         style="margin: 10px; margin-top: 10px;"
         :label="'Выйти из аккаунта'"
@@ -74,11 +76,45 @@
 
 <script>
 export default {
+async mounted() {
+  this.showComponentsAnimation();
+},
+methods:{
+  showComponentsAnimation() {
+    let index = 0;
+    const blocks = [
+        this.$refs.block_first,
+        this.$refs.block_second,
+        this.$refs.block_third,
+        this.$refs.block_fourth,
 
+        this.$refs.editBtn,
+    ];
+
+    const interval = setInterval(() => {
+        if (index < blocks.length) {
+        const block = blocks[index];
+        if (block) {
+            block.classList.add('block-show');
+        }
+        index++;
+        } else {
+        clearInterval(interval);
+        }
+    }, 50);
+  },
+}
 }
 </script>
 
 <style scoped>
+.block-show{
+    scale: 1 !important;
+    opacity: 1 !important;
+
+    transition: all .3s cubic-bezier(0.560, 1.555, 0.305, 0.940);
+
+}
 .couple-content{
   display: flex;
   gap: 60px;
@@ -127,6 +163,9 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    scale: 0.9;
+    opacity: 0;
 }
 .user-info{
     margin-top: 28px;
@@ -158,5 +197,10 @@ p{
   justify-content: center;
   align-items: center;
   border-radius: 27px;
+}
+.editProfile{
+  margin: 10px; margin-top: 60px;
+  scale: 0.9;
+  opacity: 0;
 }
 </style>

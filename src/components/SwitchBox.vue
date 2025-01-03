@@ -89,7 +89,7 @@
     },
     methods: {
       toggle(){
-        window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
         if (this.type == 1) {
           this.isVolume = !this.isVolume
         } else if(this.type == 2) {

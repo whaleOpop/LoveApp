@@ -29,6 +29,8 @@ body{
     -khtml-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
     user-select: none;
 }
 
