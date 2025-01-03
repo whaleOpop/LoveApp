@@ -59,16 +59,6 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Execute remote commands with sshpass
-        run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD}}" ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} << 'EOF'
-          if ! id -u deploy_user &>/dev/null; then
-            useradd -m deploy_user
-            echo "deploy_user:password" | chpasswd
-            usermod -aG docker deploy_user
-          fi
-          EOF
-
       - name: Deploy Docker container via SSH
         run: |
           ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} << 'EOF'
