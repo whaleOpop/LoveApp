@@ -5,6 +5,7 @@ on:
     branches:
       - 'docker-db'
 
+  workflow_dispatch:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ghcr.io/whaleopop/loveapp-docker-db
