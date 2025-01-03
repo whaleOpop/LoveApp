@@ -11,6 +11,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  assetsInclude: ['**/*.glb'],
   base: '/LoveApp/',
   resolve: {
     alias: {
