@@ -45,9 +45,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Check OpenSSL version
         run: openssl version
-      
+
       - name: Set up SSH keys
         run: |
           mkdir -p ~/.ssh
@@ -55,14 +56,13 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-
       - name: Start ssh-agent and add SSH key
         run: |
           eval $(ssh-agent -s)
           ssh-add ~/.ssh/id_rsa
 
       - name: Install sshpass
-        run: sudo apt-get install sshpass
+        run: sudo apt-get install -y sshpass
 
       - name: Create deploy user if not exists
         run: |
