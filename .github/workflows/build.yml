@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build and Deploy Docker Image
 
 on:
   push:
@@ -46,42 +46,48 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup SSH Keys and known_hosts
+      - name: Set up SSH keys
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
 
       - name: Start ssh-agent and add SSH key
         run: |
           eval $(ssh-agent -s)
-          ssh-add ~/.ssh/id_rsa
+          ssh-add ~/.ssh/id_ed25519
 
       - name: Install sshpass
         run: sudo apt-get install sshpass
 
-      - name: Execute remote commands with sshpass
-        run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD}}" ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} << 'EOF'
-          if ! id -u deploy_user &>/dev/null; then
-            useradd -m deploy_user
-            echo "deploy_user:password" | chpasswd
-            usermod -aG docker deploy_user
-          fi
-          EOF
-
-      - name: Stop and delete existing Docker container
+      - name: Create deploy user if not exists
         run: |
           sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} << 'EOF'
-          if docker ps -a --format '{{.Names}}' | grep -Eq '^docker-db$'; then
-            docker stop docker-db && docker rm docker-db
-          fi
+            if ! id -u deploy_user &>/dev/null; then
+              useradd -m deploy_user
+              echo "deploy_user:${{ secrets.SSH_PASSWORD }}" | chpasswd
+              usermod -aG docker deploy_user
+            fi
           EOF
 
-      - name: Pull and deploy new Docker container
+      - name: Stop existing Docker container (if any)
         run: |
           sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} << 'EOF'
-          docker pull ${{ env.IMAGE_NAME }}:docker-db
-          docker run -e MYSQL_USER=root -e MYSQL_PASSWORD=${{secrets.SSH_PASSWORD}} -e MYSQL_HOST=${{ secrets.SSH_HOST }} -e MYSQL_DB=loveappdb -d --name docker-db -p 8080:8000 ${{ env.IMAGE_NAME }}:docker-db
+            if docker ps -a --format '{{.Names}}' | grep -Eq '^docker-db$'; then
+              docker stop docker-db && docker rm docker-db
+            fi
+          EOF
+
+      - name: Pull new Docker image
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} << 'EOF'
+            docker pull ${{ env.IMAGE_NAME }}:docker-db
+          EOF
+
+      - name: Deploy new Docker container
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} << 'EOF'
+            docker run -e MYSQL_USER=root -e MYSQL_PASSWORD=${{ secrets.SSH_PASSWORD }} -e MYSQL_HOST=${{ secrets.SSH_HOST }} -e MYSQL_DB=loveappdb -d --name docker-db -p 8080:8000 ${{ env.IMAGE_NAME }}:docker-db
           EOF
