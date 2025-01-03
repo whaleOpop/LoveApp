@@ -49,15 +49,15 @@ jobs:
       - name: Set up SSH keys
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
 
       - name: Start ssh-agent and add SSH key
         run: |
           eval $(ssh-agent -s)
-          ssh-add ~/.ssh/id_ed25519
+          ssh-add ~/.ssh/id_rsa
 
       - name: Install sshpass
         run: sudo apt-get install sshpass
