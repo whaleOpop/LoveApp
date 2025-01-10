@@ -59,6 +59,9 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
+      - name: Verify SSH connection
+        run: ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} echo "SSH connection successful"
+
       - name: Stop existing Docker container (if any)
         run: |
           ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} << 'EOF'
