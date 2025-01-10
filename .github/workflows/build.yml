@@ -51,9 +51,10 @@ jobs:
 
       - name: Update OpenSSL
         run: sudo apt-get update && sudo apt-get install -y libssl-dev
-
+        
       - name: Set up SSH keys
         run: |
+          mkdir -p ~/.ssh
           echo -e "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
