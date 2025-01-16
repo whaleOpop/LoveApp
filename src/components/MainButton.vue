@@ -1,6 +1,9 @@
 <template>
     <div>
-        <button class="main" v-if="type==1">{{label}}</button>
+        <button class="main" v-if="type==1">
+            <div v-if="!isLoading">{{label}}</div>
+            <div v-else><span class="loader"></span></div>
+        </button>
 
         <button class="secondary" v-if="type==2">{{label}}</button>
 
@@ -10,7 +13,7 @@
 
 <script>
 export default {
-    props: ['type', 'label']
+    props: ['type', 'label', 'isLoading']
 }
 </script>
 
@@ -52,4 +55,24 @@ export default {
     width: 100%;
 }
 
+
+.loader {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid #000;
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
 </style>
