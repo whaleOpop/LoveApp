@@ -21,6 +21,7 @@ class Gallery(Base):
     name = Column(String, nullable=False)
     description = Column(String, nullable=False)
 
+
 class Couple(Base):
     __tablename__ = "couple"
     id = Column(String(255), primary_key=True, index=True)
