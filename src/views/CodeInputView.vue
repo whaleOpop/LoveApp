@@ -8,22 +8,21 @@
         <h1>Партнер</h1>
       </div>
       <div class="subtitle">
-        <p>Укажи код  твоей второй половинки</p>
+        <p>Укажи код твоей второй половинки</p>
       </div>
     </div>
 
     <div class="code-input">
       <input
-        v-for="(value, index) in code"
+        v-for="(index) in 5"
         :key="index"
         v-model="code[index]"
-        :ref="`input-${index}`"
         type="tel"
         maxlength="1"
-        @input="handleInput(index)"
-        @keydown.backspace="handleBackspace(index, $event)"
       />
+      
     </div>
+    <KeyBoard style="margin-top: 20px;" @updated="key => handleInput(key)"/>
     
     <div class="actions">
       <div class="nextButton" ref="next">
@@ -75,7 +74,7 @@
 export default {
   data() {
     return {
-      code: Array(6).fill(""),
+      code: [],
       showModal: false,
     };
   },
@@ -93,13 +92,16 @@ export default {
     },
   },
   methods: {
-    handleInput(index) {
-      const input = this.$refs[`input-${index}`][0];
-      if (input.value && index < this.code.length - 1) {
-        this.$refs[`input-${index + 1}`][0].focus();
+    handleInput(value) {
+      if(value!='0' && value!='ok' && value!='c' && this.code.length <= 5){
+        this.code.push(value)
       }
+      else if(value=='c'){
+        this.code = []
+      }
+      
     },
-    handleBackspace(index, event) {
+    handleBackspace() {
       if (!this.code[index] && index > 0) {
         this.$refs[`input-${index - 1}`][0].focus();
       }
@@ -133,13 +135,16 @@ export default {
 
 
 <style scoped>
+.subtitle{
+  margin-bottom: 40px;
+}
 .codeInput{
   background-image: url('../assets/images/backgrounds/codePage.jpg');
   background-size: cover;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: end;
 }
 h1{
   font-weight: 500;
