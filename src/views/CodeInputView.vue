@@ -93,6 +93,7 @@ export default {
   },
   methods: {
     handleInput(value) {
+      window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
       if(value!='0' && value!='ok' && value!='c' && this.code.length <= 5){
         this.code.push(value)
       }
