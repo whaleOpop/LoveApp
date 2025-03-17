@@ -16,7 +16,7 @@
       <input
         v-for="(index) in 5"
         :key="index"
-        v-model="code[index]"
+        v-model="code[index-1]"
         type="tel"
         maxlength="1"
       />
@@ -58,12 +58,12 @@
         <MainButton
         style="margin: 10px; margin-top: 10px;"
         :label="'Да, все верно'"
-        @click="console.log('clicked')"
+        @click="this.$router.push('/dateInput')"
         :type="1"/>
         <MainButton
         style="margin: 10px; margin-top: 10px;"
-        :label="'Ввести код заноко'"
-        @click="console.log('clicked')"
+        :label="'Ввести код заново'"
+        @click="toggleModal(); this.code = []"
         :type="3"/>
       </div>
     </div>
@@ -82,7 +82,7 @@ export default {
     code: {
       handler() {
         const nextButton = this.$refs.next;
-        if (this.code.join('').length === 6) {
+        if (this.code.join('').length === 5) {
           nextButton.classList.add('block-show');
         } else {
           nextButton.classList.remove('block-show');
@@ -94,21 +94,13 @@ export default {
   methods: {
     handleInput(value) {
       window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
-      if(value!='0' && value!='ok' && value!='c' && this.code.length <= 5){
+      if(value!='ok' && value!='c' && this.code.length <= 4){
         this.code.push(value)
       }
       else if(value=='c'){
-        this.code = []
-      }
-      
-    },
-    handleBackspace() {
-      if (!this.code[index] && index > 0) {
-        this.$refs[`input-${index - 1}`][0].focus();
+        this.code.pop()
       }
     },
-
-
     toggleModal(){
       window.Telegram.WebApp.HapticFeedback.notificationOccurred('success');
       if (this.showModal) {
@@ -136,6 +128,9 @@ export default {
 
 
 <style scoped>
+.actions{
+    margin-bottom: 30px;
+  }
 .subtitle{
   margin-bottom: 40px;
 }

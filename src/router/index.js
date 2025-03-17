@@ -7,6 +7,7 @@ import NewMomentView from '../views/NewMomentView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import WhereView from '../views/WhereToGoView.vue'
 import CodeInput from '../views/CodeInputView.vue'
+import DateInput from '../views/DateInputView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,6 +46,11 @@ const router = createRouter({
       path: '/codeInput',
       name: 'codeInput',
       component: CodeInput,
+    },
+    {
+      path: '/dateInput',
+      name: 'dateInput',
+      component: DateInput,
     },
   ],
 })

@@ -2,7 +2,7 @@
     <div>
         <button class="main" v-if="type==1">
             <div v-if="!isLoading">{{label}}</div>
-            <div v-else><span class="loader"></span></div>
+            <div v-else><span style="top: -5px;" class="loader"></span></div>
         </button>
 
         <button class="secondary" v-if="type==2">{{label}}</button>
@@ -57,22 +57,38 @@ export default {
 
 
 .loader {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
+  width: 38px;
+  height: 38px;
   display: inline-block;
-  border-top: 3px solid #000;
-  border-right: 3px solid transparent;
+  position: relative;
+}
+.loader::after,
+.loader::before {
+  content: '';  
   box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #FFF;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: animloader 2s linear infinite;
+}
+.loader::after {
+  animation-delay: 1s;
 }
 
-@keyframes rotation {
+@keyframes animloader {
   0% {
-    transform: rotate(0deg);
+    transform: scale(0);
+    opacity: 1;
   }
   100% {
-    transform: rotate(360deg);
+    transform: scale(1);
+    opacity: 0;
   }
-} 
+}
+    
+
 </style>

@@ -17,9 +17,8 @@
             <div class="keyNum" @click="newValue('9')"><p>9</p></div>
         </div>
         <div class="keyRow">
-            <div class="keyNum" @click="newValue('c')"><p>c</p></div>
-            <div class="keyNum" @click="newValue('0')"><p>0</p></div>
-            <div class="keyNum" @click="newValue('ok')"><p>ok</p></div>
+            <div class="keyNum" style="width: 33%; border-radius: 40px;" @click="newValue('0')"><p>0</p></div>
+            <div class="keyNum" style="width: 67%; border-radius: 40px;" @click="newValue('c')"><p>Clear</p></div>
         </div>
     </div>
   </div>
